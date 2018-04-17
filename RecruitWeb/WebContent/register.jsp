@@ -13,7 +13,7 @@
 		<style>
 			span{font-style: normal;}
 			span.error{ color:red;}
-			.ok i{ width:20px; height:20px; display:inline-block; background:url(img/ok.png); background-size:100%;}
+			.ok i{ width:12px; height:12px; display:inline-block; background:url(img/ok.png); background-size:100%;}
 			.error i{ width:12px; height:12px; display:inline-block; background:url(img/error.png); background-size:100%;}
 			.errorborder{border-color: red;}
 		</style>
@@ -104,6 +104,7 @@
     							<div class="mid_rfbody_em">    
     								
     									<input type="text" maxlength="100" name="useremail" class="" placeholder="请输入注册邮箱" id="useremail"/>
+    									
     								
     							</div>
     						</div>
@@ -160,31 +161,48 @@
     	  <script type="text/javascript" src="js/jquery.min.js"></script>
     	  <script type="text/javascript" src="js/jquery.validate.js"></script>
     	  <script type="text/javascript" src="js/verify.js" ></script>
+    	  <script src="https://unpkg.com/vue/dist/vue.js"></script>
     	  <script>
 			$(function(){
-					$('#mpanel1').slideVerify({
-							type : 1,		//类型
-							vOffset : 5,	//误差量，根据需求自行调整
-							barSize : {
-								width : '100%',
-								height : '40px'
-							},
-							ready : function() {
-							},
-							success : function() {
-								
-								
-								//......后续操作
-							},
-							error : function() {
-								
-							}
+					var check=0;
+					 jQuery.validator.addMethod("isExist", function(value, element) {       
+	        
+					    return (check==0);       
+					 }, "邮箱已经被注册");  
+						$("#useremail").blur(function(){
 							
-					});	
-				
+			 				var params = {  
+			 						useremail : $("#useremail").val()  
+		       
+			     		        };
+			 				$.ajax({  
+			 	     		    type: "POST",  
+			 	     		    url: "Checkregister", 
+			 	     		    data: params,  
+			 	     		    dataType:"text", //ajax返回值设置为text（json格式也可用它返回，可打印出结果，也可设置成json）  
+			 	     		    success: function(json){  
+			 	     		    	
+			 	     		    	check=0;    
+			 	     		    	
+			 	     		    },  
+			 	     		    error: function(json){  
+									check=1;
+									
+								
+									
+			 	     		    }  
+			 	     		 });  
+			 				
+			 				
+			 				
+			 			})
+					 
+					 
+					 
 					$("#form").validate({
 						errorElement:"span",
 						errorPlacement:function(error,element){
+							
 						element.parent().parent().find(".info").append(error)
 						element.parent().addClass("errorborder")
 					},
@@ -211,7 +229,9 @@
 					rules:{
 						useremail:{
 							required:true,
-							email:true
+							email:true,
+							isExist:true
+							
 						},
 						
 						password:{
@@ -224,11 +244,14 @@
 							
 						}
 						
+						
 					},
 					messages:{
 						useremail:{
 							required:"邮箱必须填写",	
-							email:"请输入正确的邮箱格式"
+							email:"请输入正确的邮箱格式",
+							isExist:"邮箱已经被注册"
+							
 						},
 						
 						password:{
@@ -239,11 +262,34 @@
 							required:"密码必须填写",
 							equalTo:"与密码输入不一致"
 						}
+						
 					}
 							
-							})
+				})
+			
+				$('#mpanel1').slideVerify({
+					type : 1,		//类型
+					vOffset : 5,	//误差量，根据需求自行调整
+					barSize : {
+						width : '100%',
+						height : '40px'
+					},
+					ready : function() {
+					},
+					success : function() {
+						
+						
+						//......后续操作
+					},
+					error : function() {
+						
+					}
+					
+			});	
+		
 							
-						})
+			})
+		
 			
 			
 		</script>

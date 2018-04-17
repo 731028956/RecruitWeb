@@ -248,5 +248,26 @@ public class UserModel {
 			e.printStackTrace();
 		}
 	}
+	public boolean checkregister(String useremail){
+		String sql="select userid from user_table where useremail=?";
+		int userid = 0;
+		try {
+			stat=conn.prepareStatement(sql);
+			stat.setString(1, useremail);
+			ResultSet rs=stat.executeQuery();
+			while(rs.next()){
+				userid=rs.getInt("userid");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			if(userid==0){
+				return true;		
+			}else{
+				return false;
+			}
+	}
 
 }

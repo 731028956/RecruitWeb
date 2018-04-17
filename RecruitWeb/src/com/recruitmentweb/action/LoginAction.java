@@ -34,15 +34,14 @@ public class LoginAction extends ActionSupport{
 		UserModel um=new UserModel();
 		User user=new User(useremail, password);
 		user=um.login(user);
-		Userimage ui=new Userimage(user.getUserid());	
-		ui=um.searchimage(ui);
-		if(ui!=null){
-		String result=ui.getImagepath()+".jpg";
-		session.put("image", result);
-		}
-		session.put("user", user);
-		
 		if(user!=null){
+			Userimage ui=new Userimage(user.getUserid());	
+			ui=um.searchimage(ui);
+			if(ui!=null){
+			String result=ui.getImagepath()+".jpg";
+			session.put("image", result);
+			}
+			session.put("user", user);
 			return SUCCESS;
 		}else 
 			return ERROR;	

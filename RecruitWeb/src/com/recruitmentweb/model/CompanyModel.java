@@ -418,5 +418,27 @@ public class CompanyModel {
 			return null;
 		}
 	}
+	public boolean checkregister(String companymail){
+		String sql="select companyid from company_table where companymail=?";
+		int companyid = 0;
+		try {
+			stat=conn.prepareStatement(sql);
+			stat.setString(1, companymail);
+			ResultSet rs=stat.executeQuery();
+			while(rs.next()){
+				companyid=rs.getInt("companyid");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			if(companyid==0){
+				return true;		
+			}else{
+				return false;
+			}
+	}
+
 
 }

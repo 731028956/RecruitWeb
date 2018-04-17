@@ -31,13 +31,16 @@ public class CompanyloginAction extends ActionSupport {
 		session.clear();
 		Company cp=new Company(companymail, password);
 		CompanyModel cm=new CompanyModel();
-		cm.login(cp);
+		cp=cm.login(cp);
 //		cm.selectcompanyinfo(cp);
 		session.put("company",cp);
 		if(cp!=null){
+		
 			return SUCCESS;
-		}else 
+		}else {
+			
 			return ERROR;	
+		}
 	
 
 	}

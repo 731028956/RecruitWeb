@@ -173,8 +173,7 @@
  	     		    data: {},  
  	     		    dataType:"text", //ajax返回值设置为text（json格式也可用它返回，可打印出结果，也可设置成json）  
  	     		    success: function(json){    
- 	     		     //使用这个方法解析json  
- 	     		     //result是和action中定义的result变量的get方法对应的  
+ 	     		    
  	     		    	$(".tipbgcolor").css("display","block");
  	    				$("#tip2").css("display","block");
  	     		    },  
