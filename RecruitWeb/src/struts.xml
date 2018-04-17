@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="default" extends="struts-default">
+		<action name="Register" class="com.recruitmentweb.action.RegisterAction">
+			<interceptor-ref name="token"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>      
+            <result name="invalid.token">firstresume.jsp</result>
+			<result name="success">firstresume.jsp</result>
+			<result name="error">register.jsp</result>
+		</action>
+		<action name="Login" class="com.recruitmentweb.action.LoginAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">Firstresume3</param>
+			</result>
+			<result name="error">login.jsp</result>
+		</action>
+		<action name="Firstresume" class="com.recruitmentweb.action.FirstresumeAction" >
+			<result name="success">firstresume2.jsp</result>
+			<result name="error">main.jsp</result>
+		</action>
+		<action name="Firstresume2" class="com.recruitmentweb.action.Firstresume2Action">
+		<interceptor-ref name="token"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>      
+            <result name="invalid.token">firstresume3.jsp</result>
+			<result name="success">firstresume3.jsp</result>
+			<result name="error">main.jsp</result>
+		</action>
+		<action name="Personhomepage" class="com.recruitmentweb.action.PersonhomepageAction">
+			<result name="success">personhomepage.jsp</result>
+			<result name="error">main.jsp</result>
+		</action>
+		<action name="Firstresume3" class="com.recruitmentweb.action.Firstresume3Action">
+			<result name="success">personhomepage.jsp</result>
+			<result name="error">main.jsp</result>
+		</action>
+		
+		<action name="Recruitpage" class="com.recruitmentweb.action.RecruitpageAction">
+			<result name="success">recruitpage.jsp</result>
+			<result name="error">login.jsp</result>
+		</action>
+		
+		
+		<action name="Myrecruitweb" class="com.recruitmentweb.action.MyrecruitwebAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">Getresume</param>
+			</result>
+		</action>
+		<action name="Getresume" class="com.recruitmentweb.action.GetresumeAction">
+			<result name="success">myrecruitweb.jsp</result>
+		</action>
+		<action name="Updateresume" class="com.recruitmentweb.action.UpdateresumeAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">Getresume</param>
+			</result>
+		</action>
+		<action name="Editmyinfo" class="com.recruitmentweb.action.EditmyinfoAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">Getresume</param>
+			</result>
+		</action>
+		<action name="Edititinfo" class="com.recruitmentweb.action.EdititinfoAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">Getresume</param>
+			</result>
+		</action>
+		<action name="Editedubg" class="com.recruitmentweb.action.EditedubgAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">Getresume</param>
+			</result>
+		</action>
+		<action name="Editwe" class="com.recruitmentweb.action.EditweAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">Getresume</param>
+			</result>
+		</action>
+		<action name="Deletresumeinfo" class="com.recruitmentweb.action.DeletresumeinfoAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">Getresume</param>
+			</result>
+		</action>
+		<action name="Deleterecruit" class="com.recruitmentweb.action.DeleterecruitAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">Recruitpage</param>
+			</result>
+		</action>
+		<action name="Newrecruitpage" class="com.recruitmentweb.action.NewrecruitpageAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">Recruitpage</param>
+			</result>
+			<result name="error">main.jsp</result>
+		</action>
+		<action name="Updateimage" class="com.recruitmentweb.action.UpdateimageAction">
+			
+		</action>
+		<action name="CompanyRegister" class="com.recruitmentweb.action.CompanyRegisterAction">
+			<interceptor-ref name="token"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>      
+            <result name="invalid.token">createcompany.jsp</result>
+			<result name="success">createcompany.jsp</result>
+			
+		</action>
+		<action name="Createcompany" class="com.recruitmentweb.action.CreatecompanyAction">
+			<result name="success">companyhomepage.jsp</result>
+			
+		</action>
+		<action name="Companylogin" class="com.recruitmentweb.action.CompanyloginAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">Selectcompanyinfo</param>
+			</result>
+		</action>
+		<action name="Newjob" class="com.recruitmentweb.action.NewjobAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">Searchjob</param>
+			</result>
+		</action>
+		<action name="Searchjob" class="com.recruitmentweb.action.SearchjobAction">
+			<result name="success">createjob.jsp</result>
+		</action>
+		<action name="Searchjobinfo" class="com.recruitmentweb.action.SearchjobinfoAction">
+			<result name="success">updatejob.jsp</result>
+		</action>
+		<action name="Updatejob" class="com.recruitmentweb.action.UpdatejobAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">Searchjob</param>
+			</result>
+		</action>
+		<action name="Selectcompanyinfo" class="com.recruitmentweb.action.SelectcompanyinfoAction">
+			<result name="success">companyhomepage.jsp</result>
+		</action>
+		<action name="Companyhomepage" class="com.recruitmentweb.action.CompanyhomepageAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">Selectcompanyinfo</param>
+			</result>
+		</action>
+		<action name="Deleteposition" class="com.recruitmentweb.action.DeletepositionAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">Searchjob</param>
+			</result>
+		</action>
+		<action name="Searchindex" class="com.recruitmentweb.action.SearchindexAction">
+			<result name="success">searchindex.jsp</result>
+			
+		</action>
+		<action name="Searchindexinfo" class="com.recruitmentweb.action.SearchindexinfoAction">
+			<result name="success">searchindex.jsp</result>
+			
+		</action>
+		<action name="Noselectindex" class="com.recruitmentweb.action.NoselectindexAction">
+			<result name="success">searchindex.jsp</result>
+			
+		</action>
+		<action name="Showjobindex" class="com.recruitmentweb.action.ShowjobindexAction">
+			<result name="success">showjobindex.jsp</result>
+			
+		</action>
+		<action name="Otherposition" class="com.recruitmentweb.action.OtherpositionAction">
+			<result name="success">otherposition.jsp</result>
+			
+		</action>
+		<action name="Exit" class="com.recruitmentweb.action.ExitAction">
+			<result name="success">login.jsp</result>
+		</action>
+		<action name="Sendinfo" class="com.recruitmentweb.action.SendinfoAction">
+			<result name="success">Sendinfo.jsp</result>
+		</action>
+		<action name="Receive" class="com.recruitmentweb.action.ReceiveAction">
+			<result name="success">receive.jsp</result>
+		</action>
+		<action name="Showresume" class="com.recruitmentweb.action.ShowresumeAction">
+			<result name="success">showresume.jsp</result>
+		</action>
+		<action name="Interview" class="com.recruitmentweb.action.InterviewAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">Receive</param>
+			</result>
+		</action>
+		<action name="Fromreceive" class="com.recruitmentweb.action.FromreceiveAction">
+			<result name="success">fromreceive.jsp</result>
+		</action>
+		<action name="Interviewcompany" class="com.recruitmentweb.action.InterviewcompanyAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">Fromreceive</param>
+			</result>
+		</action>
+		<action name="Userreceive" class="com.recruitmentweb.action.UserreceiveAction">
+			<result name="success">userreceive.jsp</result>
+		</action>
+	</package>
+	<package name="article" extends="json-default">  
+	    <action name="Getjobstate" class="com.recruitmentweb.action.GetjobstateAction" method="addType">  
+	        <result name="success" type="json"></result>  
+	    </action>  
+	     <action name="Judgerecruitnumber" class="com.recruitmentweb.action.JudgerecruitnumberAction" method="addType">  
+	        <result name="success" type="json"></result>  
+	    </action> 
+	     <action name="Judgeresumename" class="com.recruitmentweb.action.JudgeresumenameAction" method="addType">  
+	        <result name="success" type="json"></result>  
+	    </action> 
+	     <action name="Getresumeindex" class="com.recruitmentweb.action.GetresumeindexAction"  method="addType">  
+	        <result name="success" type="json">  
+            <!-- (3)指定需要格式化的跟对象 -->  
+            <param name="root">result</param>  
+       	 </result>  
+	    </action> 
+	    <action name="Sendrecruit" class="com.recruitmentweb.action.SendrecruitAction" method="execute">  
+	        <result name="success" type="json"></result>  
+	    </action>
+	    <action name="Refuseresume" class="com.recruitmentweb.action.RefuseresumeAction" method="execute">  
+	        <result name="success" type="json"></result>  
+	    </action>
+	    <action name="Refusejob" class="com.recruitmentweb.action.RefusejobAction" method="execute">  
+	        <result name="success" type="json"></result>  
+	    </action>
+	     <action name="Invitejob" class="com.recruitmentweb.action.InvitejobAction" method="execute">  
+	        <result name="success" type="json"></result>  
+	    </action>
+	</package>  
+
+</struts>

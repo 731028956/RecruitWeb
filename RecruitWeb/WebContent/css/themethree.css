@@ -1,0 +1,296 @@
+.headbody{
+	width: 100%;
+}
+.bar{
+	height: 32px;
+	background-color: #FF6057;
+	line-height: 32px;
+	
+}
+.nag{
+	height: 56px;
+	background-color: white;
+	border-bottom: 1px solid #ddd;
+	line-height: 56px;
+}
+.logo{
+	height: 56px;
+	width: 174px;
+	float: left;
+	
+}
+.link_to{
+	float: right;
+}
+.link_to a{
+	height: 56px;
+	float: left;
+	margin-left: 40px;
+	font-size: 16px;
+}
+.link_to a:hover{
+	color: #ff6000;
+}
+.mainbody{
+	width: 1000px;
+	margin: 0px auto;
+	padding: 20px 0px;
+	
+	
+}
+.left_dh{
+	float: left;
+	width: 140px;
+	overflow: hidden;
+	background-color: #fafafa;
+	border-left: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+.left_dh .on{
+    color: #ff6000;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-right-color: #fff;
+    border-left: 2px solid #ff6000;
+}
+.left_dh a{
+	position: relative;
+    display: block;
+    height: 42px;
+    line-height: 42px;
+    font-weight: bold;
+    color: #333;
+    padding: 0 15px;
+    border: 1px solid transparent;
+    border-right-color: #eee;
+    border-left-width: 2px;
+    font-size: 14px;
+}
+.right_dh{
+	float: right;
+	width: 822px;
+	background-color: white;
+}
+
+.inputon{
+	border: none;
+	padding: 12px 0px 10px 10px;
+	padding-right: 28px;
+	float: left;
+	background-color: white;
+	
+}
+.edit{
+	width: 30px;
+	height:30px;
+	float: right;
+	background:url(../img/editt.png);
+	background-size:cover;	
+	cursor: pointer;
+	position: absolute;
+	right: 90px;
+	display: none;
+	z-index:2;
+}
+.btn{
+	display: none;
+}
+.save{
+	width: 100px;
+	height: 30px;
+	background-color: #ff6000;
+	display: inline-block;
+	margin-left: 240px;
+	text-align: center;
+	line-height: 30px;
+	font-size: 14px;
+	color: white;
+	border-radius: 5%;
+	cursor: pointer;
+}
+.cancel{
+	width: 100px;
+	height: 30px;
+	background-color: white;
+	display: inline-block;
+	border: 1px solid #b0b0b0;
+	line-height: 30px;
+	text-align: center;
+	font-size: 14px;
+	border-radius: 5%;
+	color: #b0b0b0;
+	margin-left: 30px;
+	cursor: pointer;
+}
+.save :hover{
+	background-color: #ea5800;
+    border-color: #ea5800;
+}
+.cancel :hover{
+	background-color: #eee;
+    border-color: #b0b0b0;
+}
+.tipbgcolor{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background-color: black;
+	opacity: 0.5;	
+	z-index: 8;
+	display: none;
+	
+}
+.tip{
+	width: 600px;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	left: 35%;
+	top: 25%;		
+	z-index: 10;
+	display: none;
+	
+}
+.stip{
+	height: 50px;
+	line-height: 50px;
+	background-color: #ff6000;
+	color: white;
+	font-size: 20px;
+	padding-left: 15px;
+}
+.tipcontent{
+	padding-top: 30px;
+	padding-bottom: 20px;
+	background-color: white;
+
+}
+.tipcontent p{
+	
+	text-align: center;
+	font-size: 16px;
+	
+}
+.btntip{
+	
+	padding-top: 40px;
+	
+}
+.savetip{
+	width: 100px;
+	height: 30px;
+	background-color: #ff6000;
+	display: inline-block;
+	margin-left: 184px;
+	text-align: center;
+	line-height: 30px;
+	font-size: 14px;
+	color: white;
+	border-radius: 5%;
+	cursor: pointer;
+	border: none;
+}
+.canceltip{
+	width: 100px;
+	height: 30px;
+	background-color: white;
+	display: inline-block;
+	border: 1px solid #b0b0b0;
+	line-height: 30px;
+	text-align: center;
+	font-size: 14px;
+	border-radius: 5%;
+	color: #b0b0b0;
+	margin-left: 30px;
+	cursor: pointer;
+	
+}
+.save:hover{
+	background-color: #ea5800;
+    border-color: #ea5800;
+}
+.cancel:hover{
+	background-color: #eee;
+    border-color: #b0b0b0;
+}
+.savetip:hover{
+	background-color: #ea5800;
+    border-color: #ea5800;
+}
+.canceltip:hover{
+	background-color: #eee;
+    border-color: #b0b0b0;
+}
+#birthday2{
+	display: none;
+}
+.user{
+	position: relative;
+	width: 140px;
+	float: right;
+	margin-right:250px;
+	font-size: 14px;
+	
+}
+.user ul{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+	width: 140px;
+	height: 32px;
+	
+	
+}
+.icon1{
+	
+	cursor: pointer;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	background-color: #FFA000;
+	
+}
+.icon1 a{
+	color: white;	
+}
+.icon2{
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background-color: white;
+	display: none;	
+}
+
+.user>ul:hover>li{
+	display: block;
+}
+.icon1:hover{
+	background-color: sandybrown;	
+}
+.icon2 a:hover{
+	background-color: #FAFAFA;
+	cursor: pointer;
+	color: #ff6000;
+	
+}
+.login{
+	width: 140px;
+	height:32px ;
+	color: white;
+	line-height: 32px;
+	color: white;
+	text-align: center;
+	background-color: #FFA000;	
+	display:inline-block;
+}
+.login a{
+	cursor: pointer;
+	color:white;
+}
+#ulxiala{
+	display:none;	
+	
+}

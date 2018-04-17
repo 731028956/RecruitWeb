@@ -1,0 +1,31 @@
+.headbody{
+	background-color:#FF6057 ;
+	width: 100%;
+	height: 50px;
+	border: solid 1px gainsboro;
+}
+.headbbb{
+	width: 1600px;
+	height: 45px;
+	margin: 0px auto;
+
+}
+.headbody_iron{	width: 150px;
+	height: 45px;
+	float: left;
+	margin-left: 300px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-image: url(../img/title.png) ;
+}
+.headmfrfont{
+	width: 700px;
+	height: 45px;
+	margin: 0px auto;
+}
+.headbodfry_font_right{
+	height: 45px;
+	width: 150px;
+	float: left;
+	
+}

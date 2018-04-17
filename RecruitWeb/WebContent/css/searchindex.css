@@ -1,0 +1,46 @@
+.searchtext_sindex{
+	padding-top: 15px;
+	font-size: 19px;	
+	width: 100px;
+	
+}
+.searchul_sindex{
+	display: inline-block;
+	padding-left: 20px;
+}
+
+.searchul_sindex li{
+	float: left;
+	border: 1px solid black;
+	padding-left: 20px;
+	width: 250px;
+	height: 86px;
+	border-right: none;
+	background-color: white;
+	
+}
+.searchul_sindex li input{
+	outline: none;
+	border: none;
+	padding-top: 5px;
+	font-size: 16px;
+	
+}
+.serchbtn_sindex{
+	border: none;
+	width: 90px;
+	height: 44px;
+	margin-top: 20px;
+	outline: none;
+	font-size: 16px;
+	font-family: "microsoft yahei";
+	background-color: #ff6000;
+	border-radius: 5%;
+	color: white;
+	font-weight: bolder;
+	cursor: pointer;
+}
+.serchbtn_sindex:hover{
+	background-color: #ea5800;
+	
+}

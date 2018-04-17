@@ -1,0 +1,105 @@
+.mid_zsbody{
+	margin: 60px auto;
+	width: 758px;
+	height: 591px;
+	border: solid 1px gainsboro;
+
+	
+}
+.mid_lfbody{
+	width: 238px;
+	height: 590px;
+	float: left;	
+border-right:dashed 1px gray ;	
+}
+.mid_lfbody_hr{	
+	height: 10px;
+	width: 100%;
+	background-color: #FF9F20;
+	
+}
+.mid_lfbody_top{
+	width: 238px;
+	height: 420px;
+
+
+	
+
+	
+	
+}
+.mid_lfbody_bottom{
+	width: 238px;
+	height: 100px;
+
+
+	
+}
+.mid_rfbody{
+	width: 518px;
+	height:561px;
+	float: left;
+	
+	
+}
+
+.mid_lfbody_midbd{
+	
+	margin-left: 39px;
+	height: 548px;
+	width: 440px;
+	
+	
+	
+}
+.mid_rfbody_er{
+	height: 94px;
+	width: 440px;
+
+
+}
+.mid_rfbody_wjmm{
+	height: 20px;
+	width: 440px;
+	margin-top: 25px;
+
+	
+	
+}
+.mid_rfbody_dl{
+	
+	height: 98px;
+	width: 440px;
+	
+	
+	
+}
+.button_dl{
+	height: 43px;
+	width: 438px;
+	background-color: #FF6000;
+	border: none;
+	margin-top: 30px;
+}
+.button_dl:hover{
+	
+	background-color: #EA5800;
+
+	
+}
+.mid_rfbody_zuce{
+	
+	height: 30px;
+	width: 440px;
+	margin-top: 30px;
+	
+	
+	
+}
+.usermassage{
+	float: right;
+	width: 218px;
+	height: 100%;
+	background-color: white;
+
+}

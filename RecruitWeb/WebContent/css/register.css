@@ -1,0 +1,91 @@
+
+.mid_zsbody{
+	margin: 60px auto;
+	width: 758px;
+	height: 646px;
+	border: solid 1px gainsboro;
+	
+}
+.mid_lfbody{
+	width: 238px;
+	height: 640px;
+	float: left;
+border-right:dashed 1px gray ;	
+	
+
+	
+	
+}
+.mid_lfbody_top{
+	width: 238px;
+	height: 420px;
+
+	
+	
+
+	
+	
+}
+.mid_lfbody_bottom{
+	width: 238px;
+	height: 100px;
+
+	
+	
+}
+
+
+.mid_rfbody{
+	width: 518px;
+	height:646px;
+	float: left;
+	
+	
+}
+
+.mid_rfbody_midbd{
+	
+	margin-left: 39px;
+	height: 635px;
+	width: 440px;
+	
+	
+	
+}
+.mid_rfbody_er{
+	height: 94px;
+	width: 440px;
+
+}
+
+.mid_rfbody_zc{
+	
+	height: 98px;
+	width: 440px;
+
+	
+	
+}
+.button_zs{
+	height: 43px;
+	width: 438px;
+	background-color: #FF6000;
+	border: none;
+	margin-top: 45px;
+}
+.button_zs:hover{
+	
+	background-color: #EA5800;
+
+	
+}
+.mid_rfbody_delu{
+	
+	height: 30px;
+	width: 440px;
+	margin-top: 30px;
+	
+	
+	
+}
+

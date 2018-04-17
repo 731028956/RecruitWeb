@@ -1,0 +1,101 @@
+.head4{
+	width:1000px;
+	margin: 0px auto;
+	border: 1px solid #DDDDDD;
+}
+.headico{
+	width: 600px;
+	height: 90px;	
+	display: inline-block;
+}
+.ico{
+	width: 200px;
+	height: 60px;
+	padding-top: 15px;
+	
+}
+.paint{
+	
+	
+	
+}
+.down{
+	padding-top: 35px;
+	float: right;
+	
+}
+.face{
+	width: 85px;
+	height: 104px;
+	
+}
+.person{
+	padding: 25px 50px;
+	display: inline-block;
+	
+}
+.info{
+	width: 815px;
+	display: inline-block;
+	float: right;
+}
+.uname{
+	padding-top: 25px;
+	font-size: 24px;
+	padding-bottom: 18px;
+	
+}
+.top1{
+	float: left;
+	padding-right: 30px;
+	
+	
+}
+.top2{
+	padding-top: 10px;
+	
+	
+}
+.mleft{
+	width: 430px;
+	padding-left: 50px;	
+	font-size: 14px;
+	display: inline-table
+	
+}
+.titleleft{
+	font-weight: bolder;
+	font-size: 16px;
+	padding: 25px 50px;	
+}
+.sleft{
+	width: 100px;
+	display: inline-block;
+	padding-bottom: 15px;
+	vertical-align:top;
+}
+.sright{
+	width: 270px;
+	display: inline-block;
+	padding-bottom: 15px;
+	vertical-align:top;
+}
+.s2left{
+	width: 240px;
+	display: inline-block;
+	 
+}
+.s2right{
+	width: 600px;
+	display: inline-block;
+	
+}
+.m2left{
+	width: 100%;
+	padding-left: 50px;	
+	font-size: 14px;
+	
+}
+.m2left td{
+	padding-bottom: 10px;
+}

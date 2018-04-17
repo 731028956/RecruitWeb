@@ -1,0 +1,39 @@
+body,div,ul,li,h1,dl,dt,dd,p{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	font-family:microsoft yahei;
+	
+	}
+	body{
+	font-size: 12px;
+
+	}
+.clearfix:after{
+    visibility: hidden;
+    clear:both;
+    display: block;
+    content:"";
+    height: 0px;
+   
+       		
+    }
+.clearfix{
+    *zoom:1;
+       }
+       ul li{
+	list-style-type: none;
+	}
+a{
+	text-decoration: none;
+	color:black;
+	
+	}
+	.rf{
+	float: right;
+	}
+      
+.lf{
+	float: left;
+	
+	}

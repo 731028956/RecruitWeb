@@ -1,0 +1,135 @@
+.bg{
+	background: url(../img/bjt_jieqi_chunfen.jpg);
+	
+}
+.mainsearch_index{
+	
+	display: inline-block;
+	height: 128px;
+	padding-top: 20px;
+	width: 780px;
+	
+}
+.ul_index{
+	
+	float: left; 
+	padding-left: 20px;
+}
+
+.ul_index> li{
+	
+	width: 74px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	border-right:white 2px solid;
+	background-color: white;
+}
+.ul_index  li:hover{
+	cursor: pointer;
+	background-color: #DDDDDD;	
+	display: block;
+}
+
+
+.inputserch_index{
+	float: left;
+	width: 387px;
+	height: 40px;
+	background-color: white;
+	
+}
+.inputserch_index>input{
+	border: none;
+	border-left: 1px solid #D2D2D2;
+	border-right: 1px solid #D2D2D2;
+	margin-top: 10px;outline:none;
+	font-size: 15px;width: 380px;
+	height: 25px;
+}
+.adressselect_index{
+	float: left;
+	width: 109px;
+	height: 40px;
+}
+.adressselect_index >input{	
+	width: 100%;
+	height: 100%;
+	background-color: 
+	white;border: none;
+	outline:none;
+	
+}
+.searchbuttom_index{
+	
+	float: left;
+	width: 120px;
+	height: 40px;
+	
+}
+
+.searchbuttom_index>input{
+	width: 100%;
+	height: 100%; 
+	background-color: 
+	white;border: none;
+	outline:none; 
+	background-color: #ff6000;
+	color: white;
+	font-size: 15px;"
+}
+.searchbuttom_index>input:hover{
+	background-color: #ea5800;	
+}
+.left_button_index{
+
+	margin-top: 25px;
+}
+
+.left_button_index>button{
+	width: 70px;
+	height: 30px;
+	outline: none;
+	
+}
+.leftbutton_index{
+	
+	 margin-left: 30px;
+	 background-color: #ff6000;
+	 border: none;
+	 display:inline-block;
+	
+}
+.leftbutton_index:hover{
+	cursor: pointer;
+	background-color: #ea5800;
+}
+.rightbutton_index{
+	
+	margin-left: 15px;
+	background-color: white;
+	border: 1px solid #ff6000; 
+	display:inline-block;
+	
+}
+.rightbutton_index:hover{
+	cursor: pointer;
+	background-color: #fff0e7;	
+	
+}
+.leftbutton_index a{
+	
+	color:white;
+	
+}
+.rightbutton_index a{
+	color:#ff6000;
+	
+}
+.usermassage{
+	
+	float: right;
+	width: 218px;
+	height: 100%;
+	background-color: white;
+}
