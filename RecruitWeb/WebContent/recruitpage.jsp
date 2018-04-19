@@ -211,7 +211,7 @@
  	     		    	
  	     		    },  
  	     		    error: function(json){  
- 	     		     
+ 	     		     alert("已有该简历")
  	     		     return false;  
  	     		    }  
  	     		 });  

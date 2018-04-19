@@ -55,15 +55,18 @@
     		<div class="nagmr">
     			<div class="topnag">
     				<div class="rwname">
-    				<form method="get" action="Updateresume">
+    				<form method="get" action="Updateresume" id="updateform">
     					<p class="ntk">
     						<span class="ntkname"><input type="text" value='<s:property value="#session.resume.resumename"/>' name="resumename" class="ntktext" disabled="disabled" id="resumename"/></span>
 							<span class="editicon1" id="edit1"></span>
     					</p>	
     					<input type="hidden" value='<s:property value="#session.user.userid"/>' id="userid">
-    				</div>
+    					<div class="info">
+	    					<b></b>
+	    				</div>
+    				</div>  				
     				<div class="rwbtn" style="display: none;" id="have">
-    						<button class="reflash" type="submit">保存</button>
+    						<button class="reflash" type="button" id="submitform">保存</button>
     						<span class="reflash yulan" id="cancel">取消</span>
     						
     				</div>
@@ -806,6 +809,8 @@
    				$("#have").css("display","none");
    				$("#edit1").css("display","block");
    				$(".ntktext").attr("disabled","disabled").val(rn).removeClass("ontext");
+   				$("#updateform").find(".info").removeClass("error");
+   				$("#updateform").find("em").remove();
    				i=1;
    			})
    			var sex=$("#sex").val();
@@ -1299,6 +1304,43 @@
     	window.location="Myrecruitweb.action?userid="+userid+"&resumename="+resumename;
     },200)}
 </script>
+	<script>
+	$(function(){
+				$("#updateform").validate({
+					errorElement:"em",
+					errorPlacement:function(error,element){
+					element.parent().parent().parent().find(".info").append(error)	
+					},
+		
+				highlight:function(a){
+					$(a).parent().parent().parent().find(".info").removeClass("ok").addClass("error")
+			
+				},
+		
+				success:function(e){
+					e.parent().removeClass("error")		
+			
+				},
+		
+					rules:{
+						resumename:{
+							required:true,
+							maxlength:20
+						}			
+					},
+					messages:{
+						resumename:{
+							required:"简历名必须填写",
+							maxlength:"输入不能大于20个字"			
+						}	
+					}
+							
+				})
+							
+			})
+			
+			
+		</script>
 			<script>
 			$(function(){
 				$("#form").validate({
@@ -1554,6 +1596,35 @@
 			})
 			
 			
+		</script>
+		<script type="text/javascript">
+		$("#submitform").click(function(){
+				var params = {  
+ 		           editresume : $("#resumename").val() //文本框的id名字是typeName  
+ 		         
+ 		           
+ 		        };
+				$.ajax({  
+	     		    type: "POST",  
+	     		    url: "Judgeresumename", //这里写的是action的名字,设置了namespace会出错  
+	     		    data: params,  
+	     		    dataType:"text", //ajax返回值设置为text（json格式也可用它返回，可打印出结果，也可设置成json）  
+	     		    success: function(json){    
+	     		     //使用这个方法解析json  
+	     		     //result是和action中定义的result变量的get方法对应的  
+	     		     $("#updateform").submit();
+	     		    	
+	     		    },  
+	     		    error: function(json){  
+	     		     alert("已有该简历")
+	     		     return false;  
+	     		    }  
+	     		 });  	
+			})
+		
+		
+		
+		
 		</script>
 	
 </html>

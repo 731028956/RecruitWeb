@@ -12,6 +12,9 @@
         <link rel="stylesheet" href="css/fsresume.css" />
         <link rel="stylesheet" href="css/showjob.css" />
         <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+        <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+        <link rel="stylesheet" href="css/rp.css" />
+        <link rel="stylesheet" href="css/stylemap.css">
        	<style>
        		.move{position: fixed; top: 0px;}
        		#resumeul>li{
@@ -27,6 +30,10 @@
  			height: 30px; 
  			border: 1px solid #DDDDDD;
  			line-height:30px;
+ 			}
+ 			#tip2{
+ 			display: none;
+ 				
  			}
        		
        	</style>
@@ -124,7 +131,7 @@
     			<h1 class="ifif">联系方式</h1>
 				<div>
 					上班地址：<s:property value="#request.job.linkadress"/>
-					
+					<span style="padding-left:10px;cursor: pointer;" id="ppp">位置</span>
 				</div>
     		</div>
     		<div class="tftf">
@@ -136,7 +143,19 @@
     	</div>
     	<input type="hidden" value='<s:property value="#request.job.state"/>' id="state"/>
     	<div class="tipbgcolor"></div>
-    	<div class="tip">
+    	<div id="tip2" style="width: 800px;" class="tip">
+    		
+    			<div class="stip" id="adress"><s:property value="#request.job.linkadress"/><span id="close" style="float: right;padding-right: 20px;">关闭</span></div><div style="display: none;"><span id="x"></span><span id="y"></span></div>
+    			<div style="width: 100%;height: 400px;background-color: white;">
+		    		
+			    		<div id="container" style="position: absolute;top:auto;left: auto;bottom: auto;right: auto;"></div>
+						<div id="panel"style="top: auto;"></div>
+			    			   
+		    		
+	    		</div>
+	    		
+    	</div>
+    	<div class="tip" id="tip1">
     			<div class="stip">提示</div>
     			<form method="post" name="form1"> 
     				
@@ -159,8 +178,13 @@
 	    		</form>
     		
     	</div>
+    	
  	</body>
  	<script src="js/jquery.min.js"></script>
+ 	<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="http://cache.amap.com/lbs/static/es5.min.js"></script>
+    <script src="http://webapi.amap.com/maps?v=1.3&key=c93e1e293e5b1c3dc581f3ff633144d3&plugin=AMap.Autocomplete,AMap.PlaceSearch,AMap.Walking,AMap.Riding"></script>
+    <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
  	<script>
  		$(function(){
  			var i=0;
@@ -178,6 +202,17 @@
 	   				}
 	 				
 	 			})
+	 		$("#ppp").click(function(){
+ 				$(".tipbgcolor").css("display","block");
+ 				$("#tip2").css("display","block");
+ 				$("#tip2").css("left","29%");
+ 				
+ 			})
+ 			$("#close").click(function(){
+ 				$(".tipbgcolor").css("display","none");
+ 				$("#tip2").css("display","none");
+ 				
+ 			})
  			var state=$("#state").val();
 				if(state==0){
 					$(".stop").css("display","block");
@@ -296,11 +331,220 @@
 			})
 			function changecsstip(){
 				$(".tipbgcolor").css("display","none");
-     			$(".tip").css("display","none");		
+     			$("#tip1").css("display","none");		
 			}
  					
 		
  			})
  		})
+ 	</script>
+ 	<script>
+ window.onload = function () {		
+ 		
+ 		
+ 		var map = new AMap.Map('container', {
+	        resizeEnable: true,
+	        zoom: 12,
+	        center: [118.756376, 32.052573]
+   		});
+//地图内容
+    map.setFeatures(['bg', 'building', 'road', 'point'])
+    
+//地图空间
+    AMap.plugin(['AMap.ToolBar', 'AMap.Scale', 'AMap.MapType','AMap.Geocoder'],
+        function () {
+            map.addControl(new AMap.ToolBar());
+
+            map.addControl(new AMap.Scale());
+            var geocoder = new AMap.Geocoder({
+	            city: ""//城市，默认：“全国”
+	        });
+	       
+	        var marker = new AMap.Marker({
+	            map:map,
+	            bubble:true
+	        })
+       		var input = $("#adress").text();
+            var address = input;
+          	geocoder.getLocation(address,function(status,result){
+              if(status=='complete'&&result.geocodes.length){
+                marker.setPosition(result.geocodes[0].location);
+             	result.geocodes[0].location;
+             	$("#x").text(result.geocodes[0].location.getLng());
+             	$("#y").text(result.geocodes[0].location.getLat());
+                map.setCenter(marker.getPosition())
+               
+               
+              }else{
+//             	
+              }
+              
+            
+            })
+     
+        });
+        	
+//覆盖物
+	$("#ppp").click(function(){
+	var map = new AMap.Map('container', {
+	        resizeEnable: true,
+	        zoom: 12,
+	        center: [$("#x").text(), $("#y").text()]
+   		});
+    var marker = new AMap.Marker({
+        position: [$("#x").text(), $("#y").text()]
+        
+    });
+
+    marker.setMap(map);
+    var circle = new AMap.Circle({
+        center: [$("#x").text(), $("#y").text()],
+        radius: 100,
+        fillOpacity: 0.2,
+        strokeWeight: 1
+    })
+    circle.setMap(map);
+//自定义窗体
+    var infowindow;
+    var infoWindowContent = '<div class="infowindow-content"></div>';
+    map.plugin('AMap.AdvancedInfoWindow', function () {
+        infowindow = new AMap.AdvancedInfoWindow({
+            panel: 'panel',
+            placeSearch: true,
+            asOrigin: true,
+            asDestination: true,
+            content: infoWindowContent
+        });
+        infowindow.open(map, [$("#x").text(), $("#y").text()]);
+       
+    });
+
+//汽车路线规划
+    $('#car').on('click', function () {
+        $('.pageShow').slideToggle();
+        clearMarker()
+        AMap.plugin('AMap.Driving', function () {
+            var drving = new AMap.Driving({
+                map: map,
+                panel: "panel"
+            })
+            drving.search([
+                {keyword: $('#star').val()},
+                {keyword: $('#end').val()}
+            ]);
+        })
+    })
+//步行路线规划
+    $("#riding").on('click', function () {
+        $('.pageShow').slideToggle();
+        clearMarker()
+        var walking = new AMap.Walking({
+            map: map,
+            panel: "panel"
+        });
+        walking.search([
+            {keyword: $('#cStar').val()},
+            {keyword: $('#cEnd').val()}
+        ]);
+    })
+//骑行路线规划
+    $('#walk').on('click', function () {
+    
+        $('.pageShow').slideToggle();
+        clearMarker()
+        var riding = new AMap.Riding({
+            map: map,
+            panel: "panel"
+        });
+        riding.search([
+            {keyword: $('#wStar').val()},
+            {keyword: $('#wEnd').val()}
+        ]);
+    })
+
+    function clearMarker() {
+        if (marker) {
+            marker.setMap(null);
+            marker = null;
+        }
+        if (infowindow) {
+            infowindow.close()
+        }
+    }
+
+//输入提示
+    var autoOptions = new AMap.Autocomplete({
+        input: "tipinput"
+    });
+//城市搜索
+    var auto = new AMap.Autocomplete(autoOptions);
+    var placeSearch = new AMap.PlaceSearch({
+        map: map
+    });  //构造地点查询类
+    AMap.event.addListener(auto, "select", select);//注册监听，当选中某条记录时会触发
+    function select(e) {
+        placeSearch.setCity(e.poi.adcode);
+        placeSearch.search(e.poi.name);  //关键字查询查询
+    }
+
+    $('#show').on('click', function () {
+        clearMarker()
+        $('.pageShow').slideToggle();
+    })
+
+    $('#box').on('click', function () {
+        clearMarker()
+        $('.pageShow').slideToggle();
+        var rectOptions = {
+            strokeStyle: "dashed",
+            strokeColor: "#333",
+            fillColor: "#333",
+            fillOpacity: 0.3,
+            strokeOpacity: 1,
+            strokeWeight: 1
+        };
+        map.plugin(["AMap.MouseTool"], function () {
+            var mouseTool = new AMap.MouseTool(map);
+            //通过rectOptions更改拉框放大时鼠标绘制的矩形框样式
+            mouseTool.rectZoomIn(rectOptions);
+        });
+    })
+    $('#meter').on('click', function () {
+        $('.pageShow').slideToggle();
+        map.plugin(["AMap.RangingTool"], function () {
+            ruler1 = new AMap.RangingTool(map);
+            AMap.event.addListener(ruler1, "end", function (e) {
+                ruler1.turnOff();
+            });
+            var sMarker = {
+                icon: new AMap.Icon({
+                    size: new AMap.Size(19, 31),//图标大小
+                    image: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b1.png"
+                })
+            };
+            var eMarker = {
+                icon: new AMap.Icon({
+                    size: new AMap.Size(19, 31),//图标大小
+                    image: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b2.png"
+                }),
+                offset: new AMap.Pixel(-9, -31)
+            };
+            var lOptions = {
+                strokeStyle: "solid",
+                strokeColor: "#FF33FF",
+                strokeOpacity: 1,
+                strokeWeight: 2
+            };
+            var rulerOptions = {startMarkerOptions: sMarker, endMarkerOptions: eMarker, lineOptions: lOptions};
+            ruler2 = new AMap.RangingTool(map, rulerOptions);
+        });
+        //启用自定义样式测距
+
+       ruler1.turnOff();
+       ruler2.turnOn();
+    })
+ 	})	
+}		
+ 		
  	</script>
 </html>

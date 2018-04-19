@@ -60,7 +60,6 @@ public class ResumeModel {
 		String sqlresume="select * from resume_table where userid=? and resumename=?";
 ////		String sqlwp="select * from workexperiences_table where userid=? and resumename=?";
 ////		String sqleb="select * from educationbackground_table where userid=? and resumename=?";
-		System.out.println(resume.getResumename()+"pp1"+resume.getUserid()+"id");
 		try {
 			stat=conn.prepareStatement(sqlresume);
 			stat.setInt(1, resume.getUserid());
