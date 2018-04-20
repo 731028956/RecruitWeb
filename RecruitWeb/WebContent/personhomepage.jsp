@@ -78,9 +78,9 @@
     					企业直邀
     				</span>	
     			</a>
-    			<a href="">
+    			<a href="revisepassword.jsp">
     				<span>
-    					其他
+    					密码修改
     				</span>	
     			</a>
     		</div>	

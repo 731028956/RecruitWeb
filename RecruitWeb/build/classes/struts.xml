@@ -228,6 +228,12 @@
 	    <action name="Checkcompanymail" class="com.recruitmentweb.action.CheckcompanymailAction" method="execute">  
 	        <result name="success" type="json"></result>  
 	    </action>
+	    <action name="Reviswpassword" class="com.recruitmentweb.action.ReviswpasswordAction" method="execute">  
+	        <result name="success" type="json"></result>  
+	    </action>
+	    <action name="Revisecompanypw" class="com.recruitmentweb.action.RevisecompanypwAction" method="execute">  
+	        <result name="success" type="json"></result>  
+	    </action>
 	</package>  
 
 </struts>

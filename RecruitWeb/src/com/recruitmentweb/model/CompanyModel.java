@@ -440,5 +440,46 @@ public class CompanyModel {
 			}
 	}
 
+	public boolean judgepassword(int companyid, String oldpassword){
+		String sql="select * from company_table where  password=? and companyid=?";
+		try {
+			stat=conn.prepareStatement(sql);
+			stat.setString(1, oldpassword);
+			stat.setInt(2, companyid);
+			ResultSet rs=stat.executeQuery();
+			Company company=new Company();
+			while(rs.next()){
+				
+				company.setCompanyid(rs.getInt("companyid"));
+			}
+			if(company.getCompanyid()!=0){
 
+				return true;
+			}
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+		return false;
+			
+			
+	}
+	public void reviseuserpassword(int company, String newpassword){
+		String sql="update company_table set password=? where companyid=?";
+		try {
+			stat=conn.prepareStatement(sql);
+			stat.setString(1, newpassword);
+			stat.setInt(2, company);
+			stat.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+			
+			
+	}
 }

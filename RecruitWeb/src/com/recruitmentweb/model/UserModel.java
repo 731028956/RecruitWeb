@@ -269,5 +269,47 @@ public class UserModel {
 				return false;
 			}
 	}
+	public boolean judgepassword(int userid, String oldpassword){
+		String sql="select * from user_table where  password=? and userid=?";
+		try {
+			stat=conn.prepareStatement(sql);
+			stat.setString(1, oldpassword);
+			stat.setInt(2, userid);
+			ResultSet rs=stat.executeQuery();
+			User user=new User();
+			while(rs.next()){
+				
+				user.setUserid(rs.getInt("userid"));
+			}
+			if(user.getUserid()!=0){
+
+				return true;
+			}
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+		return false;
+			
+			
+	}
+	public void reviseuserpassword(int userid, String newpassword){
+		String sql="update user_table set password=? where userid=?";
+		try {
+			stat=conn.prepareStatement(sql);
+			stat.setString(1, newpassword);
+			stat.setInt(2, userid);
+			stat.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+			
+			
+	}
 
 }

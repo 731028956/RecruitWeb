@@ -216,19 +216,19 @@
      		           pid:$(this).parent().find("#pid").val()
      		        };
      		
-     		$.ajax({  
-     		    type: "POST",  
-     		    url: "Refuseresume", //这里写的是action的名字,设置了namespace会出错  
-     		    data: params,  
-     		    dataType:"text", //ajax返回值设置为text（json格式也可用它返回，可打印出结果，也可设置成json）  
-     		    success: function(json){    
-     		    	window.location.reload();
-     		    },  
-     		    error: function(json){  
-     		     
-     		     return false;  
-     		    }  
-     		    });  
+	     		$.ajax({  
+	     		    type: "POST",  
+	     		    url: "Refuseresume", //这里写的是action的名字,设置了namespace会出错  
+	     		    data: params,  
+	     		    dataType:"text", //ajax返回值设置为text（json格式也可用它返回，可打印出结果，也可设置成json）  
+	     		    success: function(json){    
+	     		    	window.location.reload();
+	     		    },  
+	     		    error: function(json){  
+	     		     
+	     		     return false;  
+	     		    }  
+	     		 });  
      			
  			})
  			

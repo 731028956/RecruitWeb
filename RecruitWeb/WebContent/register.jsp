@@ -256,10 +256,10 @@
 						
 						password:{
 							required:"密码必须填写",
-							rangelength:"用户名需要6-16位"
+							rangelength:"密码需要6-16位"
 						},
 						password1:{
-							required:"密码必须填写",
+							required:"确认密码必须填写",
 							equalTo:"与密码输入不一致"
 						}
 						

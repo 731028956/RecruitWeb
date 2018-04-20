@@ -80,9 +80,9 @@
     					企业直邀
     				</span>	
     			</a>
-    			<a href="">
+    			<a href="revisecompanypw.jsp">
     				<span>
-    					其他
+    					修改密码
     				</span>	
     			</a>
     		</div>	
