@@ -284,7 +284,7 @@
  				}
  				else{
  					$(".tipbgcolor").css("display","block");
- 	     			$(".tip").css("display","block");	
+ 	     			$("#tip1").css("display","block");	
  	     			if(i==0){
  	     			$.ajax({  
  	 	     		    type: "POST",  

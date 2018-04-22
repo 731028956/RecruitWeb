@@ -144,10 +144,7 @@
 				<param name="actionName">Searchjob</param>
 			</result>
 		</action>
-		<action name="Searchindex" class="com.recruitmentweb.action.SearchindexAction">
-			<result name="success">searchindex.jsp</result>
-			
-		</action>
+		
 		<action name="Searchindexinfo" class="com.recruitmentweb.action.SearchindexinfoAction">
 			<result name="success">searchindex.jsp</result>
 			

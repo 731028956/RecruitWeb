@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="css/index.css" />
         <link rel="stylesheet" href="css/searchindex.css" />
         <link rel="stylesheet" href="css/rp.css" />
+        <link rel="stylesheet" type="text/css" href="css/zxf_page.css"/>
         <title>JSP Page</title>
         <style>
     		.ulok{
@@ -147,9 +148,41 @@
     					</div>
     					
     				</div>
+
     			</div>
     		</div>
-    	
+    		 <s:set var="page" value="#session.pageinfo"/>  
+    		<div class="zxf_pagediv">
+                <a href="Searchindexinfo?pageNow=1&search=<s:property value="#request.search"/>&scope=<s:property value="#request.scope"/>&workadress=<s:property value="#request.workadress"/>&companyposition=<s:property value="#request.companyposition"/>" class="nextbtn">首页</a>  
+                  
+                <s:if test="#page.hasPre">  
+                    <a href="Searchindexinfo?pageNow=<s:property value="#page.pageNow-1"/>&search=<s:property value="#request.search"/>&scope=<s:property value="#request.scope"/>&workadress=<s:property value="#request.workadress"/>&companyposition=<s:property value="#request.companyposition"/>"class="nextbtn">上一页</a>  
+                </s:if>  
+                <s:else>  
+                    <a href="Searchindexinfo?pageNow=1&search=<s:property value="#request.search"/>&scope=<s:property value="#request.scope"/>&workadress=<s:property value="#request.workadress"/>&companyposition=<s:property value="#request.companyposition"/>" class="nextbtn" style="background-color: #dddddd;">上一页</a>  
+               		<a href="Searchindexinfo?pageNow=<s:property value="#page.pageNow"/>&search=<s:property value="#request.search"/>&scope=<s:property value="#request.scope"/>&workadress=<s:property value="#request.workadress"/>&companyposition=<s:property value="#request.companyposition"/>" class="current"><s:property value="#page.pageNow"/></a> 
+                </s:else>  
+                	<s:if test="#page.hasPre&&#page.hasNext">
+					<a href="Searchindexinfo?pageNow=<s:property value="#page.pageNow-1"/>&search=<s:property value="#request.search"/>&scope=<s:property value="#request.scope"/>&workadress=<s:property value="#request.workadress"/>&companyposition=<s:property value="#request.companyposition"/>" class="zxfPagenum"><s:property value="#page.pageNow-1"/></a>     
+					<a href="Searchindexinfo?pageNow=<s:property value="#page.pageNow"/>&search=<s:property value="#request.search"/>&scope=<s:property value="#request.scope"/>&workadress=<s:property value="#request.workadress"/>&companyposition=<s:property value="#request.companyposition"/>" class="current"><s:property value="#page.pageNow"/></a> 
+					<a href="Searchindexinfo?pageNow=<s:property value="#page.pageNow+1"/>&search=<s:property value="#request.search"/>&scope=<s:property value="#request.scope"/>&workadress=<s:property value="#request.workadress"/>&companyposition=<s:property value="#request.companyposition"/>" class="zxfPagenum"><s:property value="#page.pageNow+1"/></a>      
+                	</s:if>
+                <s:if test="#page.hasNext">  
+                    <a href="Searchindexinfo?pageNow=<s:property value="#page.pageNow+1"/>&search=<s:property value="#request.search"/>&scope=<s:property value="#request.scope"/>&workadress=<s:property value="#request.workadress"/>&companyposition=<s:property value="#request.companyposition"/>" class="nextbtn">下一页</a>  
+                </s:if>  
+                <s:else>  
+                    <a href="Searchindexinfo?pageNow=<s:property value="#page.totalPage"/>&search=<s:property value="#request.search"/>&scope=<s:property value="#request.scope"/>&workadress=<s:property value="#request.workadress"/>&companyposition=<s:property value="#request.companyposition"/>" class="nextbtn" style="background-color: #dddddd;">下一页</a>  
+               		<a href="Searchindexinfo?pageNow=<s:property value="#page.pageNow"/>&search=<s:property value="#request.search"/>&scope=<s:property value="#request.scope"/>&workadress=<s:property value="#request.workadress"/>&companyposition=<s:property value="#request.companyposition"/>" class="current"><s:property value="#page.pageNow"/></a> 
+                </s:else>  
+                 <span id="totalPage">共 <s:property value="#page.totalPage"/>页</span>
+                	
+                	
+                
+                <a href="Searchindexinfo?pageNow=<s:property value="#page.totalPage"/>&search=<s:property value="#request.search"/>&scope=<s:property value="#request.scope"/>&workadress=<s:property value="#request.workadress"/>&companyposition=<s:property value="#request.companyposition"/>" class="nextbtn">尾页</a>  
+  				<span>到<input type="text" id="page" class="zxfinput">页</span>
+  				<a  href="#"  class="nextbtn" id="intentpage">确定</a>
+  				 
+  </div>
     	
  	</body>
  	<script src="js/jquery.min.js"></script>
@@ -214,7 +247,18 @@
    				$("#um3").css("display","none");
    			}
    			
-			
+			$("#intentpage").click(function(){
+				var page=$("#page").val();	
+				if(page>=<s:property value="#page.totalPage"/>){
+					page=<s:property value="#page.totalPage"/>;
+				}
+				if(page<=1){
+					page=1;	
+				}
+				
+				$(this).attr("href","Searchindexinfo?pageNow="+page+"&search=<s:property value="#request.search"/>&scope=<s:property value="#request.scope"/>&workadress=<s:property value="#request.workadress"/>&companyposition=<s:property value="#request.companyposition"/>")
+				
+			})
 		})
 		
 		

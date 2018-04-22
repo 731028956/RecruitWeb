@@ -102,10 +102,10 @@ public class CompanyanduserModel {
 		
 		
 	}
-	public ArrayList searchsendresume(int userid){
+	public ArrayList searchsendresume(int userid,int pageSize,int pageNow){
 		ArrayList<Cau> list=new ArrayList<Cau>();
 		Changeage ch=new Changeage();
-		String sql="select * from sendresume_job where userid=? and state not like ? order by id desc";
+		String sql="select * from sendresume_job where userid=? and state not like ? order by id desc limit "+(pageNow*pageSize-pageSize)+","+pageSize;
 		try {
 			stat=conn.prepareStatement(sql);
 			stat.setInt(1, userid);
@@ -143,11 +143,11 @@ public class CompanyanduserModel {
 		
 		
 	}
-	public ArrayList searchuserresume(int userid){
+	public ArrayList searchuserresume(int userid,int pageSize,int pageNow){
 		ArrayList<Cau> list=new ArrayList<Cau>();
 		Changeage ch=new Changeage();
 		String state="%ÆóÒµÖ±Ñû%";
-		String sql="select * from sendresume_job where userid=? and state like ? order by id desc";
+		String sql="select * from sendresume_job where userid=? and state like ? order by id desc limit "+(pageNow*pageSize-pageSize)+","+pageSize;
 		try {
 			stat=conn.prepareStatement(sql);
 			stat.setInt(1, userid);
@@ -183,10 +183,10 @@ public class CompanyanduserModel {
 		
 	}
 
-	public ArrayList searchreceiveresume(int companyid){
+	public ArrayList searchreceiveresume(int companyid,int pageSize,int pageNow){	
 		ArrayList list=new ArrayList();
 		Changeage ch=new Changeage();
-		String sql="select * from sendresume_job where companyid=? order by id desc";
+		String sql="select * from sendresume_job where companyid=? order by id desc  limit "+(pageNow*pageSize-pageSize)+","+pageSize;
 		try {
 			stat=conn.prepareStatement(sql);
 			stat.setInt(1, companyid);
@@ -222,7 +222,8 @@ public class CompanyanduserModel {
 			}
 			
 			list.add(c);
-			}			
+			}		
+			
 			return list;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -296,13 +297,13 @@ public class CompanyanduserModel {
 			e.printStackTrace();
 		}
 	}
-	public ArrayList searchformreceiveresume(int companyid){
+	public ArrayList searchformreceiveresume(int companyid,int pageSize,int pageNow){
 		ArrayList list=new ArrayList();
 		
 		String sql="SELECT companyjob_table.id,companyjob_table.companyposition,workadress,companyjob_table.salary,jobintent_table.resumename,user_table.userid,username,age,sex,user_table.gzjy "
 				+ "FROM jobintent_table JOIN companyjob_table JOIN user_table "
 				+ "ON jobintent_table.workplace=companyjob_table.workadress  AND jobintent_table.userid= user_table.userid where"
-				+ " (companyjob_table.companyposition like CONCAT(?,jobintent_table.ExpectPosition,?))and companyjob_table.companyid=?";
+				+ " (companyjob_table.companyposition like CONCAT(?,jobintent_table.ExpectPosition,?))and companyjob_table.companyid=?  limit "+(pageNow*pageSize-pageSize)+","+pageSize;
 		try {
 			stat=conn.prepareStatement(sql);
 			stat.setString(1, "%");
@@ -332,10 +333,7 @@ public class CompanyanduserModel {
 			if(rs1.next()){
 			}else{
 				list.add(c);
-			}
-
-				
-			
+			}	
 				rs1.close();
 				stat1.close();
 			

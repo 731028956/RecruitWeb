@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="css/fsresume.css" />
         <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     	<link rel="stylesheet" href="css/rp.css" />
+    	<link rel="stylesheet" type="text/css" href="css/zxf_page.css"/>
     	<style>
     		.ulok{
     		width: 100%;display: inline-block;
@@ -130,7 +131,38 @@
     					
     					
     					</div>
-    					
+    						<s:set var="page" value="#session.pagefromreceive"/>  
+    		<div class="zxf_pagediv">
+                <a href="Fromreceive?pageNow=1" class="nextbtn">首页</a>  
+                  
+                <s:if test="#page.hasPre">  
+                    <a href="Fromreceive?pageNow=<s:property value="#page.pageNow-1"/>"class="nextbtn">上一页</a>  
+                </s:if>  
+                <s:else>  
+                    <a href="Fromreceive?pageNow=1" class="nextbtn" style="background-color: #dddddd;">上一页</a>  
+               		<a href="Fromreceive?pageNow=<s:property value="#page.pageNow"/>"/></a> 
+                </s:else>  
+                	<s:if test="#page.hasPre&&#page.hasNext">
+					<a href="Fromreceive?pageNow=<s:property value="#page.pageNow-1"/>" class="zxfPagenum"><s:property value="#page.pageNow-1"/></a>     
+					<a href="Fromreceive?pageNow=<s:property value="#page.pageNow"/>" class="current"><s:property value="#page.pageNow"/></a> 
+					<a href="Fromreceive?pageNow=<s:property value="#page.pageNow+1"/>" class="zxfPagenum"><s:property value="#page.pageNow+1"/></a>      
+                	</s:if>
+                <s:if test="#page.hasNext">  
+                    <a href=" Fromreceive?pageNow=<s:property value="#page.pageNow+1"/>" class="nextbtn">下一页</a>  
+                </s:if>  
+                <s:else>  
+                    <a href="Fromreceive?pageNow=<s:property value="#page.totalPage"/>" class="nextbtn" style="background-color: #dddddd;">下一页</a>  
+               		<a href="Fromreceive?pageNow=<s:property value="#page.pageNow"/>" class="current"><s:property value="#page.pageNow"/></a> 
+                </s:else>  
+                 <span id="totalPage">共 <s:property value="#page.totalPage"/>页</span>
+                	
+                	
+                
+                <a href="Fromreceive?pageNow=<s:property value="#page.totalPage"/>" class="nextbtn">尾页</a>  
+  				<span>到<input type="text" id="page" class="zxfinput">页</span>
+  				<a  href="#"  class="nextbtn" id="intentpage">确定</a>
+  				 
+ 		 </div>
     				</div>
     			</div>
     		<div class="tipbgcolor"></div>
@@ -169,6 +201,18 @@
 	<script src="js/receiveelment.js"></script>
  	<script>
  		$(function(){
+ 			$("#intentpage").click(function(){
+				var page=$("#page").val();	
+				if(page>=<s:property value="#page.totalPage"/>){
+					page=<s:property value="#page.totalPage"/>;
+				}
+				if(page<=1){
+					page=1;	
+				}
+				
+				$(this).attr("href","Fromreceive?pageNow="+page+"")
+				
+			})
  			$(".gs").click(function(){
  				$(".tipbgcolor").css("display","block");
  				$("#tip1").css("display","block");	

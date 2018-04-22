@@ -44,8 +44,7 @@
     				</a>
     				<p class="link_to">				
     						<a href="index.jsp">首页</a>
-    						<a href="<s:url action="Noselectindex"/>">职位搜索</a>
-    						<a href="">地区频道</a>					
+    						<a href="Searchindexinfo?scope=全文&search=&workadress=全国&companyposition=">职位搜索</a>				
     				</p>
     			
     			</div>
@@ -55,7 +54,7 @@
     	<div class="bg">
     	<div style=" height: 100px;">		
     	</div>
-    	<form action="Searchindex" method="get">
+    	<form action="Searchindexinfo" method="get">
     	<div class="mainbody" style="; height: 148px; padding: 0px 0px;">    
     		
     			
@@ -82,7 +81,7 @@
     					
     				</div>
     				<div class="searchbuttom_index"> 
-    					
+    					<input type="hidden" name="companyposition">
     					<input type="submit" value="搜索" id="submit"/>
     					
     				</div>
