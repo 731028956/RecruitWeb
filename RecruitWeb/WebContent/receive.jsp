@@ -30,7 +30,7 @@
     						<a><s:property value="#session.company.companyname"/></a>
     					</li>
     					<li class="icon2"><a href="<s:url action="Searchjob"/>">职位中心</a></li>
-    					<li class="icon2"><a>收到的简历</a></li>
+    					<li class="icon2"><a href="<s:url action="Receive"/>">收到的简历</a></li>
     					<li class="icon2"><a href="Exit">退出账号</a></li>
     				</ul>	
     			</div>
@@ -41,9 +41,8 @@
     				<img  src="img/title.jpg" class="logo"/>
     				</a>
     				<p class="link_to">				
-    						<a href="">首页</a>
-    						<a href="">职位搜索</a>
-    										
+    						<a href="index.jsp">首页</a>
+    						<a href="Searchindexinfo?scope=全文&search=&workadress=全国&companyposition=">职位搜索</a>												
     				</p>
     			
     			</div>
@@ -54,12 +53,12 @@
     	<div class="mainbody">
     		<div class="left_dh">
     			
-    			<a href="companyhomepage.jsp" >
+    			<a href="companyhomepage.jsp">
     				<span>
     					公司信息
     				</span>	
     			</a>
-    			<a href="<s:url action="Searchjob"/>">
+    			<a href="<s:url action="Searchjob"/>" >
     				<span>
     					职位中心
     				</span>	
@@ -69,14 +68,14 @@
     					收到的简历
     				</span>	
     			</a>
-    			<a href="">
+    			<a href="<s:url action="Fromreceive"/>">
     				<span>
     					企业直邀
     				</span>	
     			</a>
-    			<a href="">
+    			<a href="revisecompanypw.jsp">
     				<span>
-    					其他
+    					修改密码
     				</span>	
     			</a>
     		</div>	

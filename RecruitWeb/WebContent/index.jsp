@@ -24,7 +24,7 @@
     						<a><s:property value="#session.user.username"/></a>
     					</li>
     					<li class="icon2"><a href="<s:url action="Recruitpage"/>">简历中心</a></li>
-    					<li class="icon2"><a>我的申请</a></li>
+    					<li class="icon2"><a href="<s:url action="Sendinfo"/>">我的申请</a></li>
     					<li class="icon2"><a href="Exit">退出账号</a></li>
     				</ul>	
     				<ul id="ulxialacp">
@@ -32,7 +32,7 @@
     						<a><s:property value="#session.company.companyname"/></a>
     					</li>
     					<li class="icon2"><a href="<s:url action="Searchjob"/>">职位中心</a></li>
-    					<li class="icon2"><a>收到的简历</a></li>
+    					<li class="icon2"><a href="<s:url action="Receive"/>">收到的简历</a></li>
     					<li class="icon2"><a href="Exit">退出账号</a></li>
     				</ul>	
     			</div>
@@ -117,7 +117,7 @@
     		
     		</div>
     		<div style="display: none;" class="usermassage" id="um3">
-    				<div style="width: 100%;height: 55px;margin: 0px auto; padding-top: 20px;text-align:center;line-height:55px;font-size:16px;">
+    				<div style="width: 100%;height: 55px;margin: 0px auto; padding-top: 20px;text-align:center;font-size:16px;">
     					<s:property value="#session.company.companyname"/>		
     				</div>
     				<div class="left_button_index">

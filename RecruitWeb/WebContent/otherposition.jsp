@@ -32,8 +32,23 @@
     	<div class="headbody">
     		<div class="bar">
     			<div class="user">
-    				
-    				
+    				<span class="login"><a href="login.jsp">登录</a>/<a href="register.jsp">注册</a></span>
+    				<ul id="ulxiala">
+    					<li class="icon1" id="username">	
+    						<a><s:property value="#session.user.username"/></a>
+    					</li>
+    					<li class="icon2"><a href="<s:url action="Recruitpage"/>">简历中心</a></li>
+    					<li class="icon2"><a href="<s:url action="Sendinfo"/>">我的申请</a></li>
+    					<li class="icon2"><a href="Exit">退出账号</a></li>
+    				</ul>	
+    				<ul id="ulxialacp">
+    					<li class="icon1" id="companyname">	
+    						<a><s:property value="#session.company.companyname"/></a>
+    					</li>
+    					<li class="icon2"><a href="<s:url action="Searchjob"/>">职位中心</a></li>
+    					<li class="icon2"><a href="<s:url action="Receive"/>">收到的简历</a></li>
+    					<li class="icon2"><a href="Exit">退出账号</a></li>
+    				</ul>	
     			</div>
     		</div>
     		<div class="nag">
@@ -43,8 +58,7 @@
     				</a>
     				<p class="link_to">				
     						<a href="index.jsp">首页</a>
-    						<a href="searchindex.jsp">职位搜索</a>
-    						<a href="">地区频道</a>					
+    						<a href="searchindex.jsp">职位搜索</a>				
     				</p>
     			
     			</div>
@@ -100,26 +114,37 @@
  	</body>
  	<script src="js/jquery.min.js"></script>
  	<script>
- 		$(function(){
- 			$(window).scroll(function(){
- 				var m=$(this).scrollTop();
- 				var t=$(".worktitle").offset().top;
+	var state=$("#state").val();
+	if(state==0){
+		$(".stop").css("display","block");
+		$(".sq").css("display","none");	
+	}
+	if($("#username").text().trim()!=""&&$("#companyname").text().trim()==""){
+			$(".login").css("display","none");
+			$("#ulxiala").css("display","block");
+			$("#ulxialacp").css("display","none");
+			$("#um1").css("display","none");
+			$("#um2").css("display","block");
+			$("#um3").css("display","none");
 
- 				if(m>t){
- 					$(".worktitle").addClass("move");
- 					
- 				}
-   				if(m<110){
-   					$(".worktitle").removeClass("move");
-   					
-   				}
- 					
- 			})
- 			
- 			
- 			
- 		})
- 		
+		}
+		else if($("#companyname").text().trim()!=""&&$("#username").text().trim()==""){
+			$(".login").css("display","none");
+			$("#ulxiala").css("display","none");
+			$("#ulxialacp").css("display","block");
+			$("#um1").css("display","none");
+			$("#um2").css("display","none");
+			$("#um3").css("display","block");
+			
+
+		}else{
+			$(".login").css("display","block");
+			$("#ulxiala").css("display","none");
+			$("#ulxialacp").css("display","none");
+			$("#um1").css("display","block");
+			$("#um2").css("display","none");
+			$("#um3").css("display","none");
+		}
  		
  	</script>
 </html>

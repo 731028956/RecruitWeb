@@ -2,7 +2,7 @@ package com.recruitmentweb.javabean;
 
 public class Pager {
 	  private int pageNow;      //当前页  
-      private int pageSize=2;   //每页显示多少条记录  
+      private int pageSize=15;   //每页显示多少条记录  
       private int totalPage;    //共有多少页  
       private int totalSize;      //共有多少条记录  
       private boolean hasFirst;   //是否有首页  

@@ -103,6 +103,28 @@ public class ResumeModel {
 			return null;
 		}
 	}
+	public ArrayList searchjobintenttableinformation(int userid){
+		ArrayList al=new ArrayList<>();
+	
+		String sqljt="select * from jobintent_table where userid= ?";
+		try {
+			stat=conn.prepareStatement(sqljt);
+			stat.setInt(1, userid);			
+			ResultSet rs=stat.executeQuery();
+			while(rs.next()){
+				Resume re=new Resume();
+				re.setExpectPosition(rs.getString("ExpectPosition"));
+				re.setWorkplace(rs.getString("workplace"));
+				al.add(re);
+			}
+			return al;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
 	public ArrayList<Resume> selecteducationbackground(int userid,String resumename){
 		String sql;
 		ArrayList<Resume> resume = new ArrayList<Resume>();

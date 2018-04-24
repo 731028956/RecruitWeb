@@ -41,7 +41,7 @@
     						<a><s:property value="#session.user.username"/></a>
     					</li>
     					<li class="icon2"><a href="<s:url action="Recruitpage"/>">简历中心</a></li>
-    					<li class="icon2"><a>我的申请</a></li>
+    					<li class="icon2"><a href="<s:url action="Sendinfo"/>">我的申请</a></li>
     					<li class="icon2"><a href="Exit">退出账号</a></li>
     				</ul>	
     				<ul id="ulxialacp">
@@ -49,7 +49,7 @@
     						<a><s:property value="#session.company.companyname"/></a>
     					</li>
     					<li class="icon2"><a href="<s:url action="Searchjob"/>">职位中心</a></li>
-    					<li class="icon2"><a>收到的简历</a></li>
+    					<li class="icon2"><a href="<s:url action="Receive"/>">收到的简历</a></li>
     					<li class="icon2"><a href="Exit">退出账号</a></li>
     				</ul>	
     			</div>
@@ -61,8 +61,7 @@
     				</a>
     				<p class="link_to">				
     						<a href="index.jsp">首页</a>
-    						<a href="searchindex.jsp">职位搜索</a>
-    						<a href="">地区频道</a>					
+    						<a href="Searchindexinfo?scope=全文&search=&workadress=全国&companyposition=">职位搜索</a>												
     				</p>
     			
     			</div>
@@ -81,7 +80,7 @@
     			</div>
     				<div style="padding-top: 15px;padding-left: 20px;">
     				<span><s:property value="#session.job.companyname"/></span>
-    				<span style="margin-left: 340px"><a href="Otherposition?companyid=<s:property value="#session.companyid"/>">该公司所有职位</a></span>
+    				<span style="float: right;"><a>该公司所有职位</a></span>
     				</div>
     				<div style="padding-top: 15px;padding-left: 20px; padding-bottom: 20px;"> 
     				<span><s:property value="#session.company.cpnature"/>   |  <s:property value="#session.company.scale"/>   |  <s:property value="#session.company.companyindustry"/></span>
@@ -209,75 +208,7 @@
 	   				$("#um2").css("display","none");
 	   				$("#um3").css("display","none");
 	   			}
-				$("#submitform1").click(function(){
-	 				var params = {  
-	     		           resumeid : $("#resumeid").val(), //文本框的id名字是typeName  
-	     		           jobid:$("#jobid").val()
-	     		           
-	     		        };
-	 				$.ajax({  
-	 	     		    type: "POST",  
-	 	     		    url: "Sendrecruit", //这里写的是action的名字,设置了namespace会出错  
-	 	     		    data: params,  
-	 	     		    dataType:"text", //ajax返回值设置为text（json格式也可用它返回，可打印出结果，也可设置成json）  
-	 	     		    success: function(json){    
-	 	     		     //使用这个方法解析json  
-	 	     		     //result是和action中定义的result变量的get方法对应的  
-	 	     		    	alert("已申请,7天之内无法再次申请");
-	 	     		    	location.href=window.location.href;
-	 	     		    	
-	 	     		    },  
-	 	     		    error: function(json){  
-	 	     		  	alert("已申请过,7天之内无法再次申请");
-	 	     		     return false;  
-	 	     		    }  
-	 	     		 });  
-	 				
-	 				
-	 				
-	 			})
 
- 			$("#sq").click(function(){
- 				if($("#username").text().trim()==""){			
- 					location.href="login.jsp";
- 				}
- 				else{
- 					$(".tipbgcolor").css("display","block");
- 	     			$(".tip").css("display","block");	
- 	     			if(i==0){
- 	     			$.ajax({  
- 	 	     		    type: "POST",  
- 	 	     		    url: "Getresumeindex", //这里写的是action的名字,设置了namespace会出错  
- 	 	     		    data: {},  
- 	 	     		    dataType:"text", //ajax返回值设置为text（json格式也可用它返回，可打印出结果，也可设置成json）  
- 	 	     		    success: function(json){    
- 	 	     		     //使用这个方法解析json  
- 	 	     		     //result是和action中定义的result变量的get方法对应的  
- 	 	     		     var obj = $.parseJSON(json); 
- 	 	     		
- 	 	     			  $.each(obj,function(key,val){
- 	 	     				  var li = document.createElement("li"); 
- 	 	     				  var input=document.createElement("input");
- 	 	     				  input.setAttribute("type", "hidden");
- 	 	     				  input.setAttribute("value", key);
- 	 	     				  li.innerHTML = obj[key]; 
- 	 	     				  document.getElementById("resumeul").appendChild(li).appendChild(input);
- 	 	     				  $("#resumeul").find("li").addClass("moo");
- 	 	     				 
- 	 	     				  
- 	 	     			});
- 	 	     				i++;
- 	 	     			
- 	 	     		    },  
- 	 	     		    error: function(json){  
- 	 	     		     alert("您还没有创建简历 请先创建简历");
- 	 	     		     location.href="Recruitpage";
- 	 	     		     i++;
- 	 	     		     return false;  
- 	 	     		    }  
- 	 	     		 });  	
- 	     			}
- 				}
  			$('#resumeul').on('click', '.moo' ,function(){
  	     			 $("#resumetext").val($(this).text())
  	     			 $("#resumeid").val($(this).find("input").val())

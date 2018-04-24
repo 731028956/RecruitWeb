@@ -349,4 +349,37 @@ public class CompanyanduserModel {
 		
 		
 	}
+	public ArrayList searchformreceiveresume(String workplace,String expectPosition){
+		ArrayList list=new ArrayList();
+		String sql="select * from company_job where workadress=? and companyposition like ? and state=1";
+		try {
+			stat=conn.prepareStatement(sql);
+			stat.setString(1, workplace);
+			stat.setString(2, "%"+expectPosition.trim()+"%");
+			System.out.println("%"+expectPosition.trim()+"%");
+//			stat.setInt(3, );
+			ResultSet rs=stat.executeQuery();
+			while(rs.next()){
+			Cau c=new Cau();
+			c.setJobid(rs.getInt("id"));
+			c.setCompanyid(rs.getInt("companyid"));
+			c.setCompanyposition(rs.getString("companyposition"));
+			c.setSalary(rs.getString("salary"));
+			c.setWorkadress(rs.getString("workadress"));
+			c.setCompanyname(rs.getString("companyname"));
+			c.setUpdatetime(rs.getDate("updatetime"));
+			list.add(c);
+			}
+			return list;
+			} 
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+			
+		}
+		
+		
+		
+	}
 }

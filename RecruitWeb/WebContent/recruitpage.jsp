@@ -20,6 +20,10 @@
     		.ulok>li{
     		overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
     		}
+    		#huan:hover{
+    		cursor:pointer;
+    		color:#ff6000;
+    		}
     	
     	</style>
     </head>
@@ -32,7 +36,7 @@
     						<a><s:property value="#session.user.username"/></a>
     					</li>
     					<li class="icon2"><a href="<s:url action="Recruitpage"/>">简历中心</a></li>
-    					<li class="icon2"><a>我的申请</a></li>
+    					<li class="icon2"><a href="<s:url action="Sendinfo"/>">我的申请</a></li>
     					<li class="icon2"><a href="Exit">退出账号</a></li>
     				</ul>	
     				
@@ -45,8 +49,7 @@
     				</a>
     				<p class="link_to">				
     						<a href="index.jsp">首页</a>
-    						<a href="searchindex.jsp">职位搜索</a>
-    						<a href="">地区频道</a>					
+    						<a href="Searchindexinfo?scope=全文&search=&workadress=全国&companyposition=">职位搜索</a>												
     				</p>
     			
     			</div>
@@ -62,31 +65,31 @@
     					个人信息
     				</span>	
     			</a>
-    				<a href="<s:url action="Recruitpage"/>" class="on">
+    			<a href="<s:url action="Recruitpage"/>" class="on">
     				<span>
     					简历中心
     				</span>	
     			</a>
-    				<a href="<s:url action="Sendinfo"/>">
+    			<a href="<s:url action="Sendinfo"/>">
     				<span>
     					我的申请
     				</span>	
     			</a>
-    			<a href="">
+    			<a href="<s:url action="Userreceive"/>">
     				<span>
     					企业直邀
     				</span>	
     			</a>
-    			<a href="">
+    			<a href="revisepassword.jsp">
     				<span>
-    					其他
+    					密码修改
     				</span>	
     			</a>
-    		</div>	
+    		</div>		
 
     		<div class="right_dh">
     			<div class="mfbody color" style="padding-bottom: 40px;">
-    				<h1>简历中心</h1>
+    				<h1 style="padding-left: 0px;">简历中心</h1>
     				<span style="padding-left: 600px;cursor:pointer" id="new">新建简历</span>
     				<div class="rbox">
     					<div class="tit">
@@ -115,8 +118,34 @@
     					
     				</div>
     			</div>
+    				<div class="color" style="margin-top: 35px;border-bottom:none;">
+    				<h2 style="font-weight: normal;padding-left:10px;">职位推荐 <span style="float:right;font-size:8px;padding-right:52px;" id="huan">换一批</span></h2>
+    				
+    				<div class="rbox">	
+	
+    					<div class="rli" style="border: 1px solid #dddddd;border-bottom:none;">
+    					<s:if test="">
+    					</s:if>
+    					<s:iterator value="#request.tuijian" var="m" status="s">
+    						<s:if test="#s.index<5">
+    						<s:iterator value="top" var="inner"> 
+    						<ul class="ulok" style="border-bottom: 1px solid #dddddd;">
+    							<li style="float:left;width:220px;padding-left:10px;text-align: left;"><a href="Showjobindex?jobid=<s:property value="#inner.jobid"/>&companyid=<s:property value="#inner.companyid"/>"><s:property value="#inner.companyposition" /></a></li>
+    							<li style="float:left;width:200px;text-align: left;"><a href="Otherposition?companyid=<s:property value="#inner.companyid"/>"><s:property value="#inner.companyname" /></a></li>
+    							<li style="float:left;width:120px;text-align: left;"><s:property value="#inner.workadress" /></li>
+    							<li style="float:left;width:150px;text-align: left;color:#FF6000;font-size:16px;"><s:property value="#inner.salary" /></li>
+    							<li style="float:left;width:110px;text-align: left;"><s:date name="#inner.updatetime" format="yyyy-MM-dd"/></li>
+    							
+    						</ul>
+    						</s:iterator>
+    						</s:if>
+    					</s:iterator>	
+    					</div>
+    					
+    				</div>
+    			</div>
     			<div class="tipbgcolor"></div>
-    		<div class="tip" id="tip1">
+    		<div class="tip" id="tip1" style="margin">
     			<form method="post" action="Deleterecruit">
     			<div class="stip">提示</div>
 	    		<div class="tipcontent">
@@ -217,6 +246,11 @@
  	     		 });  
  				
  				
+ 				
+ 			})
+ 			$("#huan").click(function(){
+ 				
+ 				window.location.href=window.location.href;
  				
  			})
  		})

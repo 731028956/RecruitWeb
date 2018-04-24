@@ -48,7 +48,7 @@
     						<a><s:property value="#session.user.username"/></a>
     					</li>
     					<li class="icon2"><a href="<s:url action="Recruitpage"/>">简历中心</a></li>
-    					<li class="icon2"><a>我的申请</a></li>
+    					<li class="icon2"><a href="<s:url action="Sendinfo"/>">我的申请</a></li>
     					<li class="icon2"><a href="Exit">退出账号</a></li>
     				</ul>	
     				<ul id="ulxialacp">
@@ -56,7 +56,7 @@
     						<a><s:property value="#session.company.companyname"/></a>
     					</li>
     					<li class="icon2"><a href="<s:url action="Searchjob"/>">职位中心</a></li>
-    					<li class="icon2"><a>收到的简历</a></li>
+    					<li class="icon2"><a href="<s:url action="Receive"/>">收到的简历</a></li>
     					<li class="icon2"><a href="Exit">退出账号</a></li>
     				</ul>	
     			</div>
@@ -68,8 +68,7 @@
     				</a>
     				<p class="link_to">				
     						<a href="index.jsp">首页</a>
-    						<a href="searchindex.jsp">职位搜索</a>
-    								
+    						<a href="Searchindexinfo?scope=全文&search=&workadress=全国&companyposition=">职位搜索</a>												
     				</p>
     			
     			</div>
@@ -88,7 +87,7 @@
     			</div>
     				<div style="padding-top: 15px;padding-left: 20px;">
     				<span><s:property value="#request.job.companyname"/></span>
-    				<span style="margin-left: 340px"><a href="Otherposition?companyid=<s:property value="#request.companyid"/>">该公司所有职位</a></span>
+    				<span style="float:right;"><a href="Otherposition?companyid=<s:property value="#request.companyid"/>">该公司所有职位</a></span>
     				</div>
     				<div style="padding-top: 15px;padding-left: 20px; padding-bottom: 20px;"> 
     				<span><s:property value="#request.company.cpnature"/>   |  <s:property value="#request.company.scale"/>   |  <s:property value="#request.company.companyindustry"/></span>
@@ -132,6 +131,14 @@
 				<div>
 					上班地址：<s:property value="#request.job.linkadress"/>
 					<span style="padding-left:10px;cursor: pointer;" id="ppp">位置</span>
+				</div>
+				<div style="padding-top:10px;">
+					联系人：<s:property value="#request.company.linkuser"/>
+				
+				</div>
+				<div style="padding-top:10px;">
+					联系电话：<s:property value="#request.company.companyphone"/>
+				
 				</div>
     		</div>
     		<div class="tftf">
@@ -191,12 +198,12 @@
 	 			$(window).scroll(function(){
 	 				var m=$(this).scrollTop();
 	 				var t=$(".worktitle").offset().top;
-	
-	 				if(m>t){
+					var h=$(document).height();
+	 				if(m>t&&h>1200){
 	 					$(".worktitle").addClass("move");
 	 					
 	 				}
-	   				if(m<110){
+	   				if(m<120){
 	   					$(".worktitle").removeClass("move");
 	   					
 	   				}

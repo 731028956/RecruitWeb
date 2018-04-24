@@ -40,6 +40,8 @@ public class UserModel {
 			
 			return user;
 		}
+		rs.close();
+		conn.close();
 		return null;
 		
 		

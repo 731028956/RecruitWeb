@@ -41,7 +41,7 @@
     						<a><s:property value="#session.user.username"/></a>
     					</li>
     					<li class="icon2"><a href="<s:url action="Recruitpage"/>">简历中心</a></li>
-    					<li class="icon2"><a>我的申请</a></li>
+    					<li class="icon2"><a href="<s:url action="Sendinfo"/>">我的申请</a></li>
     					<li class="icon2"><a href="Exit">退出账号</a></li>
     				</ul>	
     				
@@ -53,9 +53,8 @@
     				<img  src="img/title.jpg" class="logo"/>
     				</a>
     				<p class="link_to">				
-    						<a href="">首页</a>
-    						<a href="">职位搜索</a>
-    						<a href="">地区频道</a>					
+    						<a href="index.jsp">首页</a>
+    						<a href="Searchindexinfo?scope=全文&search=&workadress=全国&companyposition=">职位搜索</a>												
     				</p>
     			
     			</div>
@@ -66,27 +65,27 @@
     	<div class="mainbody">
     		<div class="left_dh">
     			
-    			<a href="personhomepage.jsp">
+    			<a href="<s:url action="Firstresume3"/>">
     				<span>
     					个人信息
     				</span>	
     			</a>
-    			<a href="recruitpage.jsp">
+    			<a href="<s:url action="Recruitpage"/>">
     				<span>
     					简历中心
     				</span>	
     			</a>
-    			<a href="mineoffer.jsp">
+    			<a href="<s:url action="Sendinfo"/>">
     				<span>
     					我的申请
     				</span>	
     			</a>
-    			<a href="">
+    			<a href="<s:url action="Userreceive"/>">
     				<span>
     					企业直邀
     				</span>	
     			</a>
-    			<a href="revisepassword.jsp"  class="on">
+    			<a href="revisepassword.jsp" class="on">
     				<span>
     					密码修改
     				</span>	

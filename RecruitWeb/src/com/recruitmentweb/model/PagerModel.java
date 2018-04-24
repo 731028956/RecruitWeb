@@ -323,4 +323,25 @@ public class PagerModel {
 		}
 		
 	}
+	//tuijian
+//	public int tuijianzhiwei(String workplace,String expectPosition){
+//		int count=0;
+//		String sql="select  count(*) from company_job where workadress=? and companyposition like ? and state=1";
+//		try {
+//			stat=conn.prepareStatement(sql);
+//			stat.setString(1, workplace);
+//			stat.setString(2, "%"+expectPosition.trim()+"%");
+//			ResultSet rs=stat.executeQuery();
+//			while(rs.next()){
+//				count=rs.getInt(1);
+//				return count;
+//			}
+//			return 0;  
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			return 0;
+//		}
+		
+//	}
 }

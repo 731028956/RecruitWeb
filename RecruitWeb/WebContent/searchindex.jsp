@@ -41,7 +41,7 @@
     						<a><s:property value="#session.user.username"/></a>
     					</li>
     					<li class="icon2"><a href="<s:url action="Recruitpage"/>">简历中心</a></li>
-    					<li class="icon2"><a>我的申请</a></li>
+    					<li class="icon2"><a href="<s:url action="Sendinfo"/>">我的申请</a></li>
     					<li class="icon2"><a href="Exit">退出账号</a></li>
     				</ul>	
     				<ul id="ulxialacp">
@@ -49,7 +49,7 @@
     						<a><s:property value="#session.company.companyname"/></a>
     					</li>
     					<li class="icon2"><a href="<s:url action="Searchjob"/>">职位中心</a></li>
-    					<li class="icon2"><a>收到的简历</a></li>
+    					<li class="icon2"><a href="<s:url action="Receive"/>">收到的简历</a></li>
     					<li class="icon2"><a href="Exit">退出账号</a></li>
     				</ul>	
     			</div>
@@ -61,8 +61,7 @@
     				</a>
     				<p class="link_to">				
     						<a href="index.jsp">首页</a>
-    						<a href="<s:url action="Noselectindex"/>" style="color: #ff6000;">职位搜索</a>
-    						<a href="">地区频道</a>					
+    						<a href="Searchindexinfo?scope=全文&search=&workadress=全国&companyposition=">职位搜索</a>												
     				</p>
     			
     			</div>
@@ -110,7 +109,7 @@
     		</ul>
     		
     		<div style="padding-left: 20px; color: white;padding-top: 2px;">
-    			热门推荐:1 11:111
+    			
     			
     		</div>
     		 <input  name="scope" type="hidden" id="scope" value='<s:property value="scope"/>'/>
@@ -141,7 +140,7 @@
     							<li style="float:left;width:335px;"><a href="Showjobindex?jobid=<s:property value="#m.id"/>&companyid=<s:property value="#m.companyid"/>"><s:property value="#m.companyposition" /></a></li>
     							<li style="float:left;width:275px;"><a href="Otherposition?companyid=<s:property value="#m.companyid"/>"><s:property value="#m.companyname" /></a></li>
     							<li style="float:left;width:120px;"><s:property value="#m.workadress" /></li>
-    							<li style="float:left;width:150px;"><s:property value="#m.salary" /></li>
+    							<li style="float:left;width:150px;color:#FF6000;font-size:16px;"><s:property value="#m.salary" /></li>
     							<li style="float:right;width:110px;"><s:date name="#m.updatetime" format="yyyy-MM-dd"/></li>	
     						</ul>
     					</s:iterator>	

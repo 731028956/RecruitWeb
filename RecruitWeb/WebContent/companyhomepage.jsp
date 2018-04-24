@@ -281,7 +281,7 @@
 		rules:{
 			companyadress:{
 				required:true,
-				maxlength:20
+				maxlength:50
 				
 			},
 			companyname:{
@@ -304,7 +304,7 @@
 		messages:{
 			companyadress:{
 				required:"公司所在地必须填写",
-				maxlength:"输入字符不能超过20字"
+				maxlength:"输入字符不能超过50字"
 				
 				
 			},

@@ -263,7 +263,7 @@
 			},
 			linkadress:{
 				required:true,
-				maxlength:20
+				maxlength:50
 				
 			}
 			
@@ -292,7 +292,7 @@
 			},
 			linkadress:{
 				required:"详细工作地址必须填写",
-				maxlength:"输入不能大于20个字"
+				maxlength:"输入不能大于50个字"
 				
 			}
 			

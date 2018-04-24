@@ -13,7 +13,7 @@ import com.recruitmentweb.model.PagerModel;
 
 public class ReceiveAction extends ActionSupport{
 	private int pageNow = 1 ; 
-	private int pageSize = 2 ; 	
+	private int pageSize = 15 ; 	
 	public int getPageNow() {
 		return pageNow;
 	}

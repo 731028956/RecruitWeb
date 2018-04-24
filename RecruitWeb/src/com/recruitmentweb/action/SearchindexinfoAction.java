@@ -15,7 +15,7 @@ public class SearchindexinfoAction extends ActionSupport{
 	private String scope;
 	private String companyposition;
 	private int pageNow = 1 ; 
-	private int pageSize = 2 ; 
+	private int pageSize = 15 ; 
 	public String getSearch() {
 		return search;
 	}

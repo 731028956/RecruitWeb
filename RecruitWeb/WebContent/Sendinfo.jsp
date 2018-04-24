@@ -30,7 +30,7 @@
     						<a><s:property value="#session.user.username"/></a>
     					</li>
     					<li class="icon2"><a href="<s:url action="Recruitpage"/>">简历中心</a></li>
-    					<li class="icon2"><a>我的申请</a></li>
+    					<li class="icon2"><a href="<s:url action="Sendinfo"/>">我的申请</a></li>
     					<li class="icon2"><a href="Exit">退出账号</a></li>
     				</ul>	
     				
@@ -42,9 +42,8 @@
     				<img  src="img/title.jpg" class="logo"/>
     				</a>
     				<p class="link_to">				
-    						<a href="">首页</a>
-    						<a href="">职位搜索</a>
-    						<a href="">地区频道</a>					
+    						<a href="index.jsp">首页</a>
+    						<a href="Searchindexinfo?scope=全文&search=&workadress=全国&companyposition=">职位搜索</a>												
     				</p>
     			
     			</div>
@@ -65,22 +64,22 @@
     					简历中心
     				</span>	
     			</a>
-    			<a href="<s:url action="Sendinfo"/>"class="on">
+    			<a href="<s:url action="Sendinfo"/>" class="on">
     				<span>
     					我的申请
     				</span>	
     			</a>
-    			<a href="www.baidu.com">
+    			<a href="<s:url action="Userreceive"/>">
     				<span>
     					企业直邀
     				</span>	
     			</a>
-    			<a href="">
+    			<a href="revisepassword.jsp">
     				<span>
-    					其他
+    					密码修改
     				</span>	
     			</a>
-    		</div>	
+    		</div>
 
     		<div class="right_dh">
     			<div class="mfbody color" style="padding-bottom: 40px; border: none;">
@@ -92,9 +91,9 @@
     						<s:iterator value="#request.sendresume" var="m" status="s">
     						<div class="ulok" style="padding: 15px 20px; border: 1px solid #eee;">
     							<div class="li u1">
-    								<a class="zn"><s:property value="#m.companyposition" /></a>
+    								<a class="zn" href="Showjobindex?jobid=<s:property value="#m.id"/>&companyid=<s:property value="#m.companyid"/>"><s:property value="#m.companyposition" /></a>
     								<span class="xz"><s:property value="#m.salary" /></span><br />
-    								<a class="gs"><s:property value="#m.companyname" /></a>
+    								<a class="gs"  href="Otherposition?companyid=<s:property value="#m.companyid"/>"><s:property value="#m.companyname" /></a>
     								<span class="dz"><s:property value="#m.workadress" /></span>
     							</div>
     							<div class="li u2">

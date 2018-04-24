@@ -46,7 +46,7 @@
     				</a>
     				<p class="link_to">				
     						<a href="index.jsp">首页</a>
-    						<a href="searchindex.jsp">职位搜索</a>			
+    						<a href="Searchindexinfo?scope=全文&search=&workadress=全国&companyposition=">职位搜索</a>												
     				</p>
     			
     			</div>
@@ -284,7 +284,7 @@
 			},
 			linkadress:{
 				required:true,
-				maxlength:20
+				maxlength:50
 				
 			}
 			
@@ -313,7 +313,7 @@
 			},
 			linkadress:{
 				required:"详细工作地址必须填写",
-				maxlength:"输入不能大于20个字"
+				maxlength:"输入不能大于50个字"
 				
 			}
 			
