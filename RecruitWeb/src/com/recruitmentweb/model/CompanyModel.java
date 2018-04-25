@@ -100,11 +100,11 @@ public class CompanyModel {
 		try {
 			stat=conn.prepareStatement(sql);
 			stat.setString(1, cm.getCompanymail());
-			stat.setString(2, cm.getPasseword());
+			stat.setString(2, cm.getPasseword());	
 			rs=stat.executeQuery();
 			while(rs.next()){
 				cm.setCompanyid(rs.getInt(1));
-				
+				cm.setCompanyphone(rs.getString("companyphone"));
 				return cm;
 			}
 			return null;

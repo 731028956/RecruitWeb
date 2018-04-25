@@ -33,9 +33,13 @@ public class CompanyloginAction extends ActionSupport {
 		CompanyModel cm=new CompanyModel();
 		cp=cm.login(cp);
 //		cm.selectcompanyinfo(cp);
-		session.put("company",cp);
-		if(cp!=null){
 		
+		if(cp!=null){
+			if(cp.getCompanyphone()==null){
+				session.put("company",cp);
+				return "cregister";
+			}
+			session.put("company",cp);
 			return SUCCESS;
 		}else {
 			

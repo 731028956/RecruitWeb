@@ -18,6 +18,8 @@
 			<result name="success" type="redirectAction">
 				<param name="actionName">Firstresume3</param>
 			</result>
+			<result name="fa">firstresume.jsp</result>
+			<result name="f1">firstresume2.jsp</result>
 			<result name="error">login.jsp</result>
 		</action>
 		<action name="Firstresume" class="com.recruitmentweb.action.FirstresumeAction" >
@@ -113,6 +115,7 @@
 			<result name="success" type="redirectAction">
 				<param name="actionName">Selectcompanyinfo</param>
 			</result>
+			<result name="cregister">createcompany.jsp</result>
 			<result name="error">companylogin.jsp</result>
 		</action>
 		<action name="Newjob" class="com.recruitmentweb.action.NewjobAction">

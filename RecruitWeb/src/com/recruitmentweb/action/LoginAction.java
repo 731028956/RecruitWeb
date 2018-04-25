@@ -6,6 +6,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.recruitmentweb.javabean.User;
 import com.recruitmentweb.javabean.Userimage;
+import com.recruitmentweb.model.ResumeModel;
 import com.recruitmentweb.model.UserModel;
 
 public class LoginAction extends ActionSupport{
@@ -32,9 +33,19 @@ public class LoginAction extends ActionSupport{
 		Map session=ac.getSession();
 		session.clear();
 		UserModel um=new UserModel();
+		ResumeModel rm=new ResumeModel();
 		User user=new User(useremail, password);
 		user=um.login(user);
 		if(user!=null){
+			if(user.getUserphone()==null){
+				session.put("user", user);
+				return "fa";
+			}
+			if(rm.selectrename(user.getUserid()).isEmpty()){
+				session.put("user", user);
+				ac.put("gzjy", user.getGzjy());
+				return "f1";
+			}
 			Userimage ui=new Userimage(user.getUserid());	
 			ui=um.searchimage(ui);
 			if(ui!=null){

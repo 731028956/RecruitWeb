@@ -37,7 +37,9 @@ public class UserModel {
 		rs=stat.executeQuery();
 		while(rs.next()){
 			user.setUserid(rs.getInt(1));
-			
+			user.setUseremail(rs.getString("useremail"));
+			user.setUserphone(rs.getString("userphone"));
+			user.setGzjy(rs.getString("gzjy"));
 			return user;
 		}
 		rs.close();
