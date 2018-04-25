@@ -192,6 +192,9 @@
 		<action name="Userreceive" class="com.recruitmentweb.action.UserreceiveAction">
 			<result name="success">userreceive.jsp</result>
 		</action>
+		<action name="Uploadresume" class="com.recruitmentweb.action.UploadresumeAction">
+			<result name="success">index.jsp</result>
+		</action>
 	</package>
 	<package name="article" extends="json-default">  
 	    <action name="Getjobstate" class="com.recruitmentweb.action.GetjobstateAction" method="addType">  

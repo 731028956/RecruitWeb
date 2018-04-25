@@ -90,7 +90,9 @@
     		<div class="right_dh">
     			<div class="mfbody color" style="padding-bottom: 40px;">
     				<h1 style="padding-left: 0px;">简历中心</h1>
-    				<span style="padding-left: 600px;cursor:pointer" id="new">新建简历</span>
+    				<span style="padding-left:520px;cursor:pointer" id="new">新建简历</span>
+    				<span style="padding-left:26px;cursor:pointer" id="shuangchuan">上传简历</span>
+
     				<div class="rbox">
     					<div class="tit">
     						<ul class="clearfix">
@@ -175,6 +177,22 @@
 	    		</div>
 	    		</form>
     		</div>
+    		<div class="tip" id="tip3">
+    			<form method="post" action="Uploadresume" id="form2" enctype="multipart/form-data">
+    			<div class="stip">提示</div>
+	    		<div class="tipcontent">
+		    			<p>选择上传简历</p>
+		    			<p style="padding-top: 30px;">
+		    				<input type="file" name="uploadresume" style="height: 30px;text-align: center;" id="upload" accept=".docx,.doc,.wps">
+		    			</p>
+		    			<div class="btntip">
+				    				<button class="savetip" type="button" id="submitform2">上传</button>
+				    				<span class="canceltip">取消</span>
+				    	
+						</div>
+	    		</div>
+	    		</form>
+    		</div>
     		</div>
     		
  	</body>
@@ -220,6 +238,7 @@
  				$(".tipbgcolor").css("display","none");
  				$("#tip1").css("display","none");
  				$("#tip2").css("display","none");
+ 				$("#tip3").css("display","none");
  				
  			})
  			$("#submitform1").click(function(){
@@ -253,6 +272,28 @@
  				window.location.href=window.location.href;
  				
  			})
+ 			$("#shuangchuan").click(function(){
+ 				$(".tipbgcolor").css("display","block");
+ 				$("#tip3").css("display","block");
+	
+ 			})
+ 			$("#submitform2").click(function(){		
+ 				checkword($("#upload").val())
+ 			})
+ 			function checkword(ths){    
+ 			    if (ths == "") {    
+ 			        alert("请上传文件");    
+ 			        return false;    
+ 			    } else {    
+ 			        if (!/\.(doc|docx|wps|DOC|DOCX|WPS)$/.test(ths)) {
+ 			            alert("文件类型必须是.doc,.docx,.wps中的一种");    
+ 			            ths.value = "";    
+ 			            return false;    
+ 			        }    
+ 			    }    
+ 			    $("#form2").submit();
+ 			    return true;    
+ 			}   
  		})
 
  	</script>
