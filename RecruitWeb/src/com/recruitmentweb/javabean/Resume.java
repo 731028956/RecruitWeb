@@ -25,6 +25,7 @@ public class Resume {
 	private String workstate;
 	private String selfdescribe;
 	private String extra;
+	private String resumepath;
 	public String getCompanyname() {
 		return companyname;
 	}
@@ -190,6 +191,12 @@ public class Resume {
 	public void setExtra(String extra) {
 		this.extra = extra;
 	}
+	public String getResumepath() {
+		return resumepath;
+	}
+	public void setResumepath(String resumepath) {
+		this.resumepath = resumepath;
+	}
 	
 	public Resume() {
 		super();
@@ -259,7 +266,5 @@ public class Resume {
 		this.resumename = resumename;
 	}
 
-	
-	
 
 }

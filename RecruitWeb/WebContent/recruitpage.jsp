@@ -107,8 +107,14 @@
     						<ul class="ulok"<s:if test="#s.even">style="background-color:#fafafa"</s:if>>
     							<li style="float:left;width:200px;"><s:property value="#m.resumename" /></li>
     							<li style="width: 300px;" class="rf">
-    								<a href="Myrecruitweb?resumename=<s:property value="#m.resumename"/>">修改</a>|
-    								<span style="cursor: pointer;" id="delete">删除<span>
+    								<s:if test="#m.resumepath!=null">
+    								<a href="${pageContext.request.contextPath}/resume/<s:property value="#m.userid"/>/<s:property value="#m.resumepath" />" id="checkupload">下载</a>|
+    									<span style="cursor: pointer;" id="deleteup">删除<span>
+    								</s:if>
+    								<s:else>
+    									<a href="Myrecruitweb?resumename=<s:property value="#m.resumename"/>" id="checkupload">修改</a>|
+    									<span style="cursor: pointer;" id="delete">删除<span>
+    								</s:else>    		
     								<input type="hidden" value='<s:property value="#m.userid" />' id="userid"/>
     								<input type="hidden" value='<s:property value="#m.resumename" />' id="resumename"/>
     								
@@ -147,7 +153,7 @@
     				</div>
     			</div>
     			<div class="tipbgcolor"></div>
-    		<div class="tip" id="tip1" style="margin">
+    		<div class="tip" id="tip1">
     			<form method="post" action="Deleterecruit">
     			<div class="stip">提示</div>
 	    		<div class="tipcontent">
@@ -159,8 +165,22 @@
 						<input type="hidden"  id="deleteresumename" name="deleteresumename"/>
 						</div>
 	    		</div>
+	    		</div>
 	    		</form>
-    		</div>
+	    		<div class="tip" id="tipup">
+	    		<form method="post" action="Deleteupload">
+    			<div class="stip">提示:删除改简历相应的投递信息也会被删除！</div>
+	    		<div class="tipcontent">
+		    			<p>确认删除此张简历吗？</p>
+		    			<div class="btntip">
+				    				<button class="savetip" type="submit">确认</button>
+				    				<span class="canceltip">取消</span>
+				    	<input type="hidden"  id="deleteuseridup" name="deleteuseridup"/>
+						<input type="hidden"  id="deleteresumenameup" name="deleteresumenameup"/>
+						</div>
+	    		</div>
+	    		</form>
+    			</div>
     		<div class="tip" id="tip2">
     			<form method="post" action="Newrecruitpage" method="get" id="form1">
     			<div class="stip">提示</div>
@@ -206,9 +226,18 @@
  				var resumename=$(this).parent().find("#resumename").val();
  				$("#deleteuserid").val(userid);
  				$("#deleteresumename").val(resumename);
- 	
  				
  				
+ 				
+ 			})
+ 			$("#deleteup").click(function(){
+ 				$(".tipbgcolor").css("display","block");
+ 				$("#tipup").css("display","block");
+ 				var userid=$(this).parent().find("#userid").val();
+ 				var resumename=$(this).parent().find("#resumename").val();
+ 				$("#deleteuseridup").val(userid);
+ 				$("#deleteresumenameup").val(resumename);
+ 			
  			})
 
  				
@@ -239,6 +268,7 @@
  				$("#tip1").css("display","none");
  				$("#tip2").css("display","none");
  				$("#tip3").css("display","none");
+ 				$("#tipup").css("display","none");
  				
  			})
  			$("#submitform1").click(function(){
@@ -273,8 +303,19 @@
  				
  			})
  			$("#shuangchuan").click(function(){
- 				$(".tipbgcolor").css("display","block");
- 				$("#tip3").css("display","block");
+ 				var i=0;
+ 				$(".ulok").each(function(){
+ 					var check=$(this).find("#checkupload").text().trim();
+ 					if(check=="下载"){
+ 						alert("已上传过简历");
+ 						i=1;
+ 					}
+ 					
+ 				})
+ 				if(i==0){
+ 					$(".tipbgcolor").css("display","block");
+ 	 				$("#tip3").css("display","block");
+ 				}
 	
  			})
  			$("#submitform2").click(function(){		

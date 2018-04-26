@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import com.recruitmentweb.javabean.Cau;
+import com.recruitmentweb.javabean.Resume;
 import com.recruitmentweb.javabean.User;
 import com.recruitmentweb.method.Changeage;
 
@@ -220,7 +221,15 @@ public class CompanyanduserModel {
 				c.setUser(user);
 	
 			}
-			
+			String sql2="select resumepath from resume_table where id=?";
+			stat=conn.prepareStatement(sql2);
+			stat.setInt(1, rs.getInt("resumeid"));
+			ResultSet rs2=stat.executeQuery();
+			while(rs2.next()){
+				Resume resume=new Resume();
+				resume.setResumepath(rs2.getString("resumepath"));
+				c.setResume(resume);
+			}
 			list.add(c);
 			}		
 			

@@ -90,7 +90,7 @@
     					
     						<s:iterator value="#request.Receiveresume" var="m" status="s">
     						<div class="ulok" style="padding: 15px 20px; border: 1px solid #eee;">
-    							<div class="li u1">
+    							<div class="li u1">				
     								<a class="zn"><s:property value="#m.companyposition" /></a>
     								<span class="xz"><s:property value="#m.salary" /></span><br />
     								<a class="gs"><s:property value="#m.user.username" /></a>
@@ -98,6 +98,7 @@
     								<span class="dz"><s:property value="#m.user.sex" /></span>
     								<span class="dz"><s:property value="#m.user.gzjy" /></span>
     								<span class="dz"><s:property value="#m.user.adress" /></span>
+    							
     							</div>
     							<div class="li u2">
     								<div class="rq">
@@ -106,7 +107,12 @@
     								</div>
     								<div class="jl">
     									<label>申请简历</label>
+    									<s:if test="#m.resume.resumepath==null">
     									<span><a href="Showresume?state=<s:property value="#m.state"/>&resumename=<s:property value="#m.resumename"/>&id=<s:property value="#m.id"/>&userid=<s:property value="#m.userid"/>"><s:property value="#m.resumename" /></a></span>
+    									</s:if>
+    									<s:else>
+    									<span><a href="${pageContext.request.contextPath}/resume/<s:property value="#m.userid"/>/<s:property value="#m.resume.resumepath" />" ><s:property value="#m.resumename" /></a></span>
+    									</s:else>
     								</div>
     								
     							</div>
@@ -114,8 +120,8 @@
     								<span class="zn">状态</span>
     								<span class="xz zx"><s:property value="#m.state" /></span><br />
     								<div id="state">
-	    								<span class="gs">邀请</span>
-	    								<span class="dz" id="refuse">拒绝</span>
+	    								<span class="gs" style="cursor:pointer">邀请</span>
+	    								<span class="dz" id="refuse" style="cursor:pointer">拒绝</span>
 	    								<input type="hidden" value="<s:property value="#m.id" />" id="pid">
 		    						</div>
 		    						<div id="interview" style="display:none;">

@@ -41,11 +41,11 @@ public class ResumeModel {
 				re.setUserid(rs.getInt(2));
 				re.setResumename(rs.getString(3));
 				re.setUpdatedate(rs.getDate(4));
+				re.setResumepath(rs.getString(5));	
 				resume.add(re);	
-//				rs.close();
-//				stat.close();
-//				conn.close();
+				
 			}
+			
 			return resume;
 			
 		} catch (SQLException e) {
@@ -258,6 +258,26 @@ public class ResumeModel {
 //			}
 			
 			
+			return true;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}	
+	}
+	public boolean uploadresume(int userid,String resumename,String resumepath) throws Exception{
+		Changeage ch=new Changeage();
+		long updatetime=ch.date().getTime();
+		String sql="insert into resume_table(userid,resumename,updatedate,resumepath)values(?,?,?,?)";
+
+		try {
+			stat=conn.prepareStatement(sql);
+			stat.setInt(1, userid);
+			stat.setString(2, resumename);
+			stat.setDate(3,new java.sql.Date(updatetime));
+			stat.setString(4, resumepath);
+			stat.executeUpdate();
 			return true;
 			
 		} catch (SQLException e) {

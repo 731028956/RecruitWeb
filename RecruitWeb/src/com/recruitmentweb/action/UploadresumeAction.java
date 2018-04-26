@@ -9,7 +9,9 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.recruitmentweb.javabean.Resume;
 import com.recruitmentweb.javabean.User;
+import com.recruitmentweb.model.ResumeModel;
 
 public class UploadresumeAction extends ActionSupport{
 	private File uploadresume;
@@ -39,7 +41,7 @@ public class UploadresumeAction extends ActionSupport{
 		this.uploadresumeContentType = uploadresumeContentType;
 	}
 
-	public String execute(){
+	public String execute() throws Exception{
 		 ActionContext ac=ActionContext.getContext();
 		 Map session=ac.getSession();
 		 User user=(User) session.get("user");
@@ -48,18 +50,26 @@ public class UploadresumeAction extends ActionSupport{
 		 System.out.println("realpath: "+realpath); 
 		 StringBuffer bf=new StringBuffer();
 		 bf.append(userid);
-		 bf.append(uploadresumeFileName);		 
-		 uploadresumeFileName=bf.toString();
+		 String filename=bf.toString();
+		 File file=new File(new File(realpath),filename);
+		 if(!file.exists()){
+			 file.mkdirs();
+		 }
+		 System.out.println(file.getAbsolutePath());
+		
 		 System.out.println(uploadresumeFileName);
 		 if(uploadresume != null){ 
-			 File savefile = new File(new File(realpath), uploadresumeFileName); 
-			 System.out.println(savefile);  
-	         System.out.println(savefile.getParentFile());  
+			 File savefile = new File(new File(file.getAbsolutePath()), uploadresumeFileName); 
+			 System.out.println(savefile.getAbsolutePath());  
+	         System.out.println(savefile.getParentFile()); 
+	         System.out.println(savefile.getParentFile().exists());
 	         if(savefile.getParentFile().exists()){  
 	                try {  
 	                    savefile.getParentFile().mkdirs();  
 	                    FileUtils.copyFile(uploadresume, savefile);
 	                    System.out.println("文件上传成功");
+	                    ResumeModel rm=new ResumeModel();		
+	                    rm.uploadresume(userid, uploadresumeFileName,uploadresumeFileName);
 	                } catch (IOException e) {  
 	                    e.printStackTrace();  
 	                }  
