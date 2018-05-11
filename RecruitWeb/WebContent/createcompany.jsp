@@ -22,6 +22,11 @@
 			.everyWeekDay .weekday,.everyDay .days {/*解决span不支持width属性*/display: -moz-inline-box;display: inline-block;margin: 5px 0 0 20px;text-align: center;width: 20px;border: 1px solid #F7F7F7;cursor: pointer;}		
 			.marginTop{margin-top: 5px;}
 			.selectStyle{padding-left: 10px;border: none;border-radius: 3px;outline: none;appearance: none;-moz-appearance: none;-webkit-appearance: none;margin: 0 10px 0 10px;width: 60px;border-color: #0FB9EF;color: #0FB9EF;}       
+		em{font-style: normal;line-height: 40px;}
+		em.error{ color:red;}
+		.ok i{ width:20px; height:20px; display:inline-block; background:url(img/ok.png); background-size:100%;}
+		.error i{ width:12px; height:12px; display:inline-block; background:url(img/error.png); background-size:100%;}
+		.errorborder{border-color: red;}   
 	</style>
     <body>
     <div id="app">
@@ -42,7 +47,7 @@
     	<div class="main">
     		<div class="tiankong"></div>
 	    	
-	    	<form method="get" action="Createcompany">
+	    	<form method="get" action="Createcompany" id="form">
 					<div style="width: 100%;height: 30px;"></div>
 					<div class="mfbody">
 						<h1>公司信息</h1>
@@ -53,6 +58,9 @@
 									公司名
 								</span>
 								<input name="companyname" type="text" maxlength="50" class="frominput" />
+								<label class="info">
+    								<i></i>
+    							</label>
 							</li>
 							<!--<li>
 								<span>
@@ -86,6 +94,9 @@
 										公司所在地
 								</span>
 								<input type="text" class="frominput" name="companyadress" />
+								<label class="info">
+    								<i></i>
+    							</label>
 							</li>
 							<li>
 									<span>
@@ -94,6 +105,9 @@
 									</span>
 									<input type="text" class="nation frominput" value="" data-value=""  onclick="appendhybar(this,'duoxuan')" 
 										name="companyindustry"/>
+									<label class="info">
+    								<i></i>
+    								</label>
 							</li>
 							<li>
 									<span>
@@ -129,6 +143,9 @@
 										公司简介
 									</span>
 									<textarea name="profile"  maxlength="1000" style="width: 414px;height: 80px;"></textarea>
+									<label class="info">
+    								<i></i>
+    								</label>
 							</li>
 							<li>
 								<span>
@@ -136,7 +153,9 @@
 									联系人
 								</span>
 								<input name="linkuser" type="text" maxlength="11" class="frominput"style="background-color: white;"/>
-								
+								<label class="info">
+    								<i></i>
+    							</label>
 							</li>
 							<li>
 								<span>
@@ -144,7 +163,9 @@
 									联系号码
 								</span>
 								<input name="companyphone" type="text" maxlength="11" class="frominput"style="background-color: white;"/>
-								
+								<label class="info">
+    								<i></i>
+    							</label>
 							</li>
 							<li>
 								<span>
@@ -176,7 +197,102 @@
 		<script type="text/javascript" src="js/load_hycode.js"></script>
  		<script type="text/javascript" src="js/hgz_hycode.js"></script>
  		<script type="text/javascript" src="js/hgz_zncode.js"></script>
+ 		<script type="text/javascript" src="js/jquery.validate.js"></script>
 		<script src="js/fs1.js"></script>
+		<script>
+			$(function(){
+				jQuery.validator.addMethod("isMobile", function(value, element) {
+					var length = value.length;
+					var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+					return this.optional(element) || (length == 11 && mobile.test(value));
+				}, "请正确填写您的手机号码");
+				$("#form").validate({
+					errorElement:"em",
+			errorPlacement:function(error,element){
+			element.parent().find(".info").append(error)
+			element.addClass("errorborder")
+		},
+		
+		highlight:function(a){
+			$(a).parent().find(".info").removeClass("ok").addClass("error")
+			$(a).addClass("errorborder")
+		},
+		
+		success:function(e){
+			e.parent().removeClass("error").addClass("ok")			
+			e.parent().parent().find("input").removeClass("errorborder")
+		},
+		
+		rules:{
+			companyname:{
+				required:true,
+				maxlength:20
+			},
+			
+			companyadress:{
+				required:true,
+				maxlength:50
+			},
+			linkuser:{
+				required:true,
+				maxlength:20
+			},
+			companyindustry:{
+				required:true,
+				maxlength:50
+			},
+			companyphone:{
+				required:true,
+				isMobile:true,
+				minlength:11
+			},
+			profile:{
+				required:true,
+				maxlength:6000
+			}
+			
+		},
+		messages:{
+			companyname:{
+				required:"姓名必须填写",
+				maxlength:"最多输出不超过20字"
+				
+				
+			},
+			companyadress:{
+				required:"公司所在地必须填写",
+				maxlength:"最多输出不超过50字"
+				
+			},
+			linkuser:{
+				required:"联系人必须填写",
+				maxlength:"最多输出不超过20字"
+				
+				
+			},
+			companyindustry:{
+				required:"居住地必须填写",
+				maxlength:"最多输出不超过50字"
+				
+				
+			},
+			companyphone:{
+				required:"电话必须填写",
+				isMobile:"请正确填写您的手机号码",
+				minlength:"确认手机不能小于11个字符"
+			},
+			profile:{
+				required:"公司简介必须填写",
+				maxlength:"最多输出不超过6000字"
+			}
+		}
+				
+				})
+				
+			})
+			
+			
+		</script>
  	</body>
  	
 </html>

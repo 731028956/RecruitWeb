@@ -24,6 +24,11 @@
     		cursor:pointer;
     		color:#ff6000;
     		}
+    		span{font-style: normal;}
+			span.error{ color:red;}
+			.ok i{ width:12px; height:12px; display:inline-block; background:url(img/ok.png); background-size:100%;}
+			.error i{ width:12px; height:12px; display:inline-block; background:url(img/error.png); background-size:100%;}
+			.errorborder{border-color: red;}
     	
     	</style>
     </head>
@@ -188,6 +193,7 @@
 		    			<p>请输入新简历的名称</p>
 		    			<p style="padding-top: 30px;">
 		    				<input type="text" name="resumename" style="height: 30px;    border: 1px solid #ddd;text-align: center;"id="editresume"/>
+		    				
 		    			</p>
 		    			<div class="btntip">
 				    				<button class="savetip" type="button" id="submitform1">确认</button>
@@ -239,7 +245,7 @@
  				$("#deleteresumenameup").val(resumename);
  			
  			})
-
+		
  				
  			$("#new").click(function(){
  			
@@ -272,6 +278,15 @@
  				
  			})
  			$("#submitform1").click(function(){
+ 			
+ 				if($("#editresume").val().trim()==""){
+ 					alert("简历名不能为空")
+ 					return false;
+ 				}
+ 				if($("#editresume").val().length>20){
+ 					alert("简历名输入不能超过20个字符")
+ 					return false;
+ 				}
  				var params = {  
      		           editresume : $("#editresume").val() //文本框的id名字是typeName  
      		         
@@ -336,6 +351,7 @@
  			    return true;    
  			}   
  		})
+ 		
 
  	</script>
 </html>

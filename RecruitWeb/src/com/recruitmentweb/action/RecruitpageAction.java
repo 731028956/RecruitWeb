@@ -50,20 +50,23 @@ public class RecruitpageAction extends ActionSupport {
 		ArrayList getresume=rm.searchjobintenttableinformation(userid);
 		getresume=getArrayList(getresume);
 		ArrayList tuijian=new ArrayList<>();
-		CompanyanduserModel cam=new CompanyanduserModel();
-		for(int i=0;i<getresume.size();i++){
-			String workplace=((Resume) getresume.get(i)).getWorkplace();
-			String expectPosition=((Resume) getresume.get(i)).getExpectPosition();
-			if(workplace.isEmpty() || expectPosition.isEmpty()){
-				getresume.remove(i);
-				i--;
-				continue;
+		CompanyanduserModel cam=new CompanyanduserModel();	
+		if(((Resume) getresume.get(0)).getWorkplace()!=null){			
+			for(int i=0;i<getresume.size();i++){
+				if(((Resume) getresume.get(i)).getWorkplace()!=null&&((Resume)getresume.get(i)).getExpectPosition()!=null){		
+					String workplace=((Resume) getresume.get(i)).getWorkplace();
+					String expectPosition=((Resume) getresume.get(i)).getExpectPosition();
+					if(workplace.isEmpty() || expectPosition.isEmpty()){
+						getresume.remove(i);
+						i--;
+						continue;
+					}
+					System.out.println(workplace+expectPosition);
+					tuijian.add(cam.searchformreceiveresume(workplace, expectPosition));
+				}
 			}
-			System.out.println(workplace+expectPosition);
-			tuijian.add(cam.searchformreceiveresume(workplace, expectPosition));
+			tuijian=shuffle2(tuijian);
 		}
-		tuijian=shuffle2(tuijian);
-		System.out.println(tuijian.size());
 		context.put("resume", resume);
 		context.put("tuijian",tuijian);
 		if(resume!=null){
@@ -90,6 +93,12 @@ public class RecruitpageAction extends ActionSupport {
 		  if(list.size()>0){		  
 			  for(int i=0;i<list.size();i++){
 				  for(int j=i+1;j<list.size();j++){
+					  //有为空时候的bug待解决
+					  if(((Resume) list.get(i)).getWorkplace()==null||((Resume) list.get(i)).getExpectPosition()==null){
+						  list.remove(i);
+						  i--;
+						  continue;
+					  }
 					  if(((Resume) list.get(i)).getWorkplace().equals(((Resume) list.get(j)).getWorkplace())&&((Resume) list.get(i)).getExpectPosition().equals(((Resume) list.get(j)).getExpectPosition())){
 						  list.remove(j);
 						  

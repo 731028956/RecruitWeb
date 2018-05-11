@@ -30,9 +30,10 @@ public class RegisterAction extends ActionSupport{
 		session.clear();
 		UserModel um=new UserModel();
 		User user=new User(useremail, password);
-		session.put("user", user);
-		ac.put("user", user);
-		if(um.register(user)){			
+		
+		if(um.register(user)){		
+			session.put("user", user);
+			ac.put("user", user);
 			return SUCCESS;
 		}else
 			

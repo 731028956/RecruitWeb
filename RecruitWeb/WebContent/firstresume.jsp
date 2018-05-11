@@ -183,6 +183,11 @@
 		<script src="js/fs1.js"></script>
 		<script>
 			$(function(){
+				jQuery.validator.addMethod("isMobile", function(value, element) {
+					var length = value.length;
+					var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+					return this.optional(element) || (length == 11 && mobile.test(value));
+				}, "请正确填写您的手机号码");
 				$("#form").validate({
 					errorElement:"em",
 			errorPlacement:function(error,element){
@@ -202,38 +207,47 @@
 		
 		rules:{
 			username:{
-				required:true
-				
+				required:true,
+				maxlength:20
 			},
 			
 			hometown:{
-				required:true
+				required:true,
+				maxlength:20
 			},
 			adress:{
-				required:true
+				required:true,
+				maxlength:20
 			},
 			userphone:{
-				required:true
+				required:true,
+				isMobile:true,
+				minlength:11
 			}
 			
 		},
 		messages:{
 			username:{
-				required:"姓名必须填写"
+				required:"姓名必须填写",
+				maxlength:"最多输出不超过20字"
 				
 				
 			},
 			hometown:{
-				required:"户口所在地必须填写"
+				required:"户口所在地必须填写",
+				maxlength:"最多输出不超过20字"
 				
 			},
 			adress:{
-				required:"居住地必须填写"
+				required:"居住地必须填写",
+				maxlength:"最多输出不超过20字"
 				
 				
 			},
 			userphone:{
-				required:"电话必须填写"
+				required:"电话必须填写",
+				isMobile:"请正确填写您的手机号码",
+				minlength:"确认手机不能小于11个字符"
 			}
 		}
 				

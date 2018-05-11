@@ -211,24 +211,28 @@
 		
 		rules:{
 			username:{
-				required:true
+				required:true,
+				maxlength:20
 				
 			},
 			
 			hometown:{
-				required:true
+				required:true,
+				maxlength:20
 			}
 			
 			
 		},
 		messages:{
 			username:{
-				required:"姓名必须填写"
+				required:"姓名必须填写",
+				maxlength:"最大输入不能超过20字"
 				
 				
 			},
 			hometown:{
-				required:"户口所在地必须填写"
+				required:"户口所在地必须填写",
+				maxlength:"最大输入不能超过20字"
 				
 			}
 		}

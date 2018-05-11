@@ -153,7 +153,10 @@
         </script>
  	<script>
  		$(function(){
- 			
+ 			$(".canceltip").click(function(){
+ 				$("#tip1").css("display","none")
+ 				$(".tipbgcolor").css("display","none")
+ 			})
  			$(".ulok #delete").click(function(){
  				$(".tipbgcolor").css("display","block");
  				$("#tip1").css("display","block");

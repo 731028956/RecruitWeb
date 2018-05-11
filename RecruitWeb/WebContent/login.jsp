@@ -107,9 +107,7 @@
     								
     							</div>
     						</div>
-    						<div class=mid_rfbody_wjmm>
-    							忘记密码?	
-    						</div>
+    				
     						<div class="mid_rfbody_dl">
     							<button class="button_dl " type="submit" >登 录</button>
     						</div>

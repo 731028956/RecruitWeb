@@ -153,7 +153,7 @@
 	    							</div>
     							</div>
     							<div class="c c4">
-    								<label>工作地点</label>
+    								<label>详细工作地点</label>
     									<li>*</li>
     								<div class="ntxt">
     									<input type="text" value='<s:property value="#session.job.linkadress"/>' name="linkadress" style="width: 198px;height: 28px;border: 1px solid #ddd;padding-left:14px;border-radius:5% ;" />

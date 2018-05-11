@@ -365,44 +365,54 @@
 		
 		rules:{
 			schoolname:{
-				required:true
+				required:true,
+				maxlength:20
 				
 			},
 			
 			zhuanye:{
-				required:true
+				required:true,
+				maxlength:20
 			},
 			workplace:{
-				required:true
+				required:true,
+				maxlength:20
 			},
 			ExpectIndustry:{
-				required:true
+				required:true,
+				maxlength:50
 			},
 			ExpectPosition:{
 				
-				required:true
+				required:true,
+				maxlength:50
 			}
 			
 		},
 		messages:{
 			schoolname:{
-				required:"学校名必须填写"
+				required:"学校名必须填写",
+				maxlength:"最大输入不能超过20字"
 				
 				
 			},
 			zhuanye:{
-				required:"专业必须填写"
+				required:"专业必须填写",
+				maxlength:"最大输入不能超过20字"
 				
 			},
 			workplace:{
-				required:"期望工作地点必须填写"
+				required:"期望工作地点必须填写",
+				maxlength:"最大输入不能超过20字"
 
 			},
 			ExpectIndustry:{
-				required:"期望从事必须填写"
+				required:"期望从事必须填写",
+				maxlength:"最大输入不能超过50字"
 			},
 			ExpectPosition:{
-				required:"期望从事职业必须填写"
+				required:"期望从事职业必须填写",
+				maxlength:"最大输入不能超过50字"
 			}
 		}
 				
